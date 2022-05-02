@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/object-diagram
+left to right direction
+
+object Frivillig {
+Stamoplysninger
+--
+opretFrivillig()
+visFrivillig()
+ændreFrivillig()
+sletFrivillig()
+
+}
+
+object Ansvarlig {
+
+}
+
+object Vagt {
+Starttidspunkt
+sluttidspunkt
+--
+opretVagt()
+visVagt()
+ændreVagt()
+sletVagt()
+
+}
+
+object Bod {
+Navn
+--
+opretBod()
+visBod()
+ændreBod()
+sletBod()
+
+}
+
+object Database {
+--
+øndreKodeord()
+tjekVagtplan()
+checkIn()
+checkUd()
+}
+
+Vagt <-- Ansvarlig
+Database <-- Frivillig
+Ansvarlig ..|> Frivillig
+Vagt ..|> Bod
+
+/'map CapitalCity {
+ UK *-> Frivillig
+ USA *--> Ansvarlig
+ Germany *---> Vagt
+} '/
+
+/'NewYork --> CapitalCity::Bod '/
+
+@enduml

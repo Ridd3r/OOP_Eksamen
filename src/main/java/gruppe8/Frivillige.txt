@@ -1,0 +1,6 @@
+Anders,And,20,11111111,Anders@and.dk
+Lars,Larsen,40,22222222,Lars@Larsen.dk
+Sebastian,Ladegaard,29,27852291,ladefod@gmail.com
+Signe,Larsen,19,33333333,Signe@Larsen.dk
+Signe,Olsen,21,44444444,Signe@Olsen.dk
+Test,Admin,666,12345678,Test@Admin.lol

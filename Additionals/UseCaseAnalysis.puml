@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+/'
+:Main Admin: as Admin
+(Use the application) as (Use) '/
+
+Ansvarlig --|> Frivillig : Ansvarlig arver fra Frivillig
+Frivillig --> (Ændre kodeord)
+Frivillig --> (Tjek vagtplan)
+Frivillig --> (Check-in/ud)
+Frivillig --> (Ønske vagt)
+
+Ansvarlig --> (Opret frivillig)
+Ansvarlig --> (Vis frivillige)
+Ansvarlig --> (Slet frivillig)
+Ansvarlig --> (Ændre frivillig)
+
+Ansvarlig -> (Opret vagt)
+Ansvarlig -> (Vis vagt)
+Ansvarlig -> (Slet vagt)
+Ansvarlig -> (Ændre vagt)
+
+Ansvarlig --> (Opret bod)
+Ansvarlig --> (Vis bod)
+Ansvarlig --> (Slet bod)
+Ansvarlig --> (Ændre bod)
+
+
+
+
+/'
+note right of (Use)
+A note can also
+be on several lines
+end note
+
+note "Ansvarlig arver fra frivillig" as N2
+Frivillig .. Ansvarlig
+/'
+N2 .. (Use)
+'/
+@enduml

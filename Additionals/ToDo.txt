@@ -21,5 +21,5 @@ GUI
 Generalt
 - Få GUI til at starte/køre metoder med klik og indtastninger så use-cases rent faktisk virker
 - Sæt systemet op på en måde, så Ansvarlige og Frivillige har mulighed for at bruge deres relevante funktioner
-- opdatur analyse-klassediagram (domænemodel)
+- opdater analyse-klassediagram (domænemodel)
 - Lav design-diagrammer

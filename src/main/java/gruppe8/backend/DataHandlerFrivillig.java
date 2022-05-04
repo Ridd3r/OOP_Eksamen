@@ -7,7 +7,7 @@ import java.util.ArrayList;
 Der for er ArrayList private, så jeg vi er sikre på at kun funktionerne herinde kan påvirke listen.
 Det er pænt vigtigt at listen kun bliver påvirket på måder vi har kontrolleret, da "databasen" i praksis er = listen
  */
-public class DataHandler {
+public class DataHandlerFrivillig {
     BufferedWriter out;
     BufferedReader in;
     static String filePath = "src/main/java/gruppe8/Frivillige.txt";

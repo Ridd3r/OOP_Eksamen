@@ -3,7 +3,7 @@ package gruppe8.backend;
 public class Main {
     public static void main(String[] args) {
         // write your code here
-        DataHandler writer = new DataHandler();
+        DataHandlerFrivillig writer = new DataHandlerFrivillig();
         writer.openFile();
 
         //writer.addFrivillig("Sebastian","Ladegaard",29,27852291,"ladefod@gmail.com");

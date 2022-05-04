@@ -1,0 +1,2 @@
+Andersens Pølser,0,Vi sælger det bedste pølser
+Test,666,Denne bod er en test >:D

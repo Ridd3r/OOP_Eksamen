@@ -1,14 +1,9 @@
-Boder
-- Opret klasse
-- Opret relevant dataHandler
-
 Vagter
 -Opret Klasse + datahandler
 
-
 Ansvarlig
 - Opret klasse
-- Opret relevant dataHandler (Er det den vi allerede har lavet? )
+- Opret relevant dataHandler (Er det den vi allerede har lavet?)
 
 Vagtplan
 - Opret en vagtplan som kan vises

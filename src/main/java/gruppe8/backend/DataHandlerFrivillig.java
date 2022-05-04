@@ -109,6 +109,10 @@ public class DataHandlerFrivillig {
         return dataArray.indexOf(person);
     }
 
+    public Frivillig getFrivillig(int index) {
+        return dataArray.get(index);
+    }
+
     //return a string describing Frivillige who's first or lastname matches name
     //Søg efter "signe" eller "olsen" ikke "signe olsen"
     public String findFrivillig(String name) {

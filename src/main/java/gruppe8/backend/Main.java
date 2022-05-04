@@ -3,15 +3,15 @@ package gruppe8.backend;
 public class Main {
     public static void main(String[] args) {
         // write your code here
-        DataHandlerBod writer = new DataHandlerBod();
-        writer.openFile();
+        DataHandlerBod writerB = new DataHandlerBod();
+        DataHandlerFrivillig writerF = new DataHandlerFrivillig();
+        writerF.openFile();
+        writerB.openFile();
+        Vagt vagt = new Vagt(writerF.getFrivillig(1),writerB.getBod(0), Vagt.Tider.middag, Vagt.Dage.fredag);
+        System.out.println(vagt.toString());
 
-        //writer.addFrivillig("Sebastian","Ladegaard",29,27852291,"ladefod@gmail.com");
-        //writer.sletBod("test");
-        System.out.println(writer.findBod("Test"));
-        writer.changeBod("Test","Andersens Pølser",0,"Vi sælger det bedste pølser");
-        System.out.println(writer.findBod("test"));
-        writer.closeFile();
+        writerB.closeFile();
+        writerF.closeFile();
 
 
     }

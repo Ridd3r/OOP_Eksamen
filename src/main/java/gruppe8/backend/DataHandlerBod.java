@@ -90,10 +90,12 @@ public class DataHandlerBod {
    //Sletter match. Ignorere kun store/små bogstaver
     public void sletBod(String name) {
         int slettet = 0;
-        for(int i = 0; i < dataArray.size(); i++) {
+        for(int i = 0; i < dataArray.size();) {
             if(dataArray.get(i).getNavn().equalsIgnoreCase(name)) {
                 dataArray.remove(i);
                 ++slettet;
+            } else {
+                i++;
             }
         }
         System.out.println("Slettet antal boder: "+ slettet);
@@ -142,6 +144,10 @@ public class DataHandlerBod {
            }
        }
 
+    }
+
+    public Bod getBod(int index){
+        return dataArray.get(index);
     }
 
     /*Returns ArrayList containing all boder which name includes the searchWord or letter.

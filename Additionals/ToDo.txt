@@ -1,5 +1,6 @@
 Vagter
--Opret Klasse + datahandler
+-Opret Klasse(DONE)
+    + datahandler ( Måske ikke Nødvendigt?)
 
 Ansvarlig
 - Opret klasse
@@ -16,5 +17,6 @@ GUI
 Generalt
 - Få GUI til at starte/køre metoder med klik og indtastninger så use-cases rent faktisk virker
 - Sæt systemet op på en måde, så Ansvarlige og Frivillige har mulighed for at bruge deres relevante funktioner
+    - Herunder en god måde et give frivillige og boder som parametre fx til opdret vagt.
 - opdater analyse-klassediagram (domænemodel)
 - Lav design-diagrammer

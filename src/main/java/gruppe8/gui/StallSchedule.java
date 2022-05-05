@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 import static gruppe8.gui.BackgroundPane.*;
 
@@ -25,31 +28,19 @@ public class StallSchedule extends BorderPane {
         HBox stallScheduleHBox = new HBox();
         stallScheduleHBox.setAlignment(Pos.CENTER);
 
+        HBox top = new HBox();
+        Text schedule = new Text("Vagtplan ");
+        top.setAlignment(Pos.TOP_CENTER);
+        schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
+        top.getChildren().add(schedule);
+
         HBox first = new HBox();
-        first.setAlignment(Pos.TOP_CENTER);
+        first.setAlignment(Pos.CENTER);
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(0);
-        gridPane.setVgap(0);
         gridPane.setAlignment(Pos.CENTER);
         //gridPane.setGridLinesVisible(true);
 
-        //For loop to resize columns constantly if window is resized
-        //i < 10 because there is 10 columns defined in the grid
-        for (int i = 0; i < 8; i++) {
-            ColumnConstraints cc = new ColumnConstraints();
-            cc.setHgrow(Priority.ALWAYS);
-            gridPane.getColumnConstraints().add(cc);
-        }
-
-        //For loop to resize rows constantly if window is resized
-        //j < 10 because there is 10 rows defined in the grid
-        for (int i = 0; i < 4; i++) {
-            RowConstraints rc = new RowConstraints();
-            rc.setVgrow(Priority.ALWAYS);
-            gridPane.getRowConstraints().add(rc);
-        }
-
-        Label eightToTwelve = new Label("8 - 12");
+        Label eightToTwelve = new Label("08 - 12");
         Label twelveToFour = new Label("12 - 16");
         Label fourToEight = new Label("16 - 20");
         Label monday = new Label("Mandag");
@@ -287,8 +278,8 @@ public class StallSchedule extends BorderPane {
 
         first.getChildren().add(gridPane);
 
-        HBox second = new HBox();
-        second.setAlignment(Pos.BOTTOM_CENTER);
+        HBox bot = new HBox();
+        bot.setAlignment(Pos.BOTTOM_CENTER);
         Button stallScheduleOpretVagt = new Button("Opret en Vagt");
         stallScheduleOpretVagt.setAlignment(Pos.BOTTOM_LEFT);
         HBox.setHgrow(stallScheduleOpretVagt, Priority.ALWAYS);
@@ -296,10 +287,10 @@ public class StallSchedule extends BorderPane {
         Button tilbage = new Button("Tilbage");
         tilbage.setAlignment(Pos.BOTTOM_RIGHT);
         tilbage.setOnAction(e -> main.moveToStallsList());
-        second.getChildren().addAll(stallScheduleOpretVagt, tilbage);
+        bot.getChildren().addAll(stallScheduleOpretVagt, tilbage);
 
-        //stallScheduleVBox.getChildren().addAll(stallScheduleHBox, stallScheduleOpretVagt);
-        stallScheduleVBox.getChildren().addAll(first, second);
+        VBox.setVgrow(stallScheduleVBox, Priority.ALWAYS);
+        stallScheduleVBox.getChildren().addAll(top, first, bot);
         return stallScheduleVBox;
     }
 }

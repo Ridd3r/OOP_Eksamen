@@ -2,6 +2,7 @@ package gruppe8.backend;
 
 public class Frivillig {
 
+    private int ID;
     private int age;
     private int phoneNumber;
     private String firstName;
@@ -14,7 +15,19 @@ public class Frivillig {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = number;
+
     }
+
+    protected Frivillig(int ID, String firstName, String lastName, int age, int number, String email) {
+        this.age = age;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = number;
+        this.ID = ID;
+
+    }
+
 
     public void setFirstName(String name) {
         this.firstName = name;
@@ -47,12 +60,25 @@ public class Frivillig {
 
     @Override
     public String toString() {
-        String string = "First name: " + this.firstName +
-                "\nLast name: " + this.lastName +
-                "\nAge: " + this.age +
-                "\nPhone number: " + this.phoneNumber +
-                "\nEmail: " + this.email;
+        String string = this.firstName + " " + this.lastName +
+                ", Alder: " + this.age +
+                ", tlf: " + this.phoneNumber +
+                ", Email: " + this.email +
+                ", ID: " + this.ID;
         return string;
     }
 
+    public String getFrivilligString(){
+        String s = "";
+        s = s + firstName +
+                " " + lastName +
+                " " + age +
+                " " + phoneNumber +
+                " " + email;
+        return s;
+    }
+
+    public int getID() {
+        return ID;
+    }
 }

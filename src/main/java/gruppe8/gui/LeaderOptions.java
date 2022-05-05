@@ -2,16 +2,19 @@ package gruppe8.gui;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import static gruppe8.gui.BackgroundPane.*;
-
 
 //Ansvarlig Menu
 public class LeaderOptions extends BorderPane {
@@ -71,5 +74,38 @@ public class LeaderOptions extends BorderPane {
         button2.setOnAction(e -> main.moveToStallsList());
 
         return grid;
+    }
+
+    MenuBar getMenuBar() {
+        MenuBar menuBar = new MenuBar();
+
+        Menu menu = new Menu("Menu");
+        menuBar.getMenus().add(menu);
+
+        MenuItem menuItemHelp = new MenuItem("Hjælp");
+        menuItemHelp.setOnAction(e -> main.menuHelp());
+        MenuItem menuItemBack = new MenuItem("Placeholder");
+        MenuItem menuItemLogUd = new MenuItem("Log ud");
+        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemClose = new MenuItem("Luk programmet");
+        menuItemClose.setOnAction(e -> main.menuClose());
+        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemLogUd, menuItemClose);
+
+        return menuBar;
+    }
+
+    VBox VBoxTop() {
+        HBox hBoxTopImg = new HBox(); //HBox to center the Roskilde Logo Image
+        hBoxTopImg.setAlignment(Pos.CENTER);
+        hBoxTopImg.getChildren().add(RoskildeLogo());
+
+        HBox hBoxMenu = new HBox(); //Horizontal box to try and align the menu to the right instead of left
+        //Something does not add up - it appears as a menuButton instead of a menuBar which is what is called
+        hBoxMenu.setAlignment(Pos.TOP_RIGHT);
+        hBoxMenu.getChildren().add(getMenuBar());
+
+        VBox vBoxTop = new VBox(); //Vertical Box to get both image and menuBar together in the top pane
+        vBoxTop.getChildren().addAll(hBoxMenu, hBoxTopImg);
+        return vBoxTop;
     }
 }

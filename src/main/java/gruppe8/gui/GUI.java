@@ -15,6 +15,7 @@ public class GUI extends Application {
     StallsList stallsList;
     CreateStall createStall;
     StallSchedule stallSchedule;
+    CreateStallWatch createStallWatch;
 
     @Override
     public void start(Stage primaryStage) {
@@ -73,5 +74,19 @@ public class GUI extends Application {
         stallSchedule = new StallSchedule(this);
         Scene stallSchedules = new Scene(stallSchedule, 800,600);
         stage.setScene(stallSchedules);
+    }
+
+    public void moveToCreateStallWatch() {
+        createStallWatch = new CreateStallWatch(this);
+        Scene createStallWatches = new Scene(createStallWatch, 800, 600);
+        stage.setScene(createStallWatches);
+    }
+
+    public void menuClose() {
+        stage.close();
+    }
+
+    public void menuHelp() {
+        getHostServices().showDocument("https://www.google.com");
     }
 }

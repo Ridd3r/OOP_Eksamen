@@ -9,10 +9,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import static gruppe8.gui.BackgroundPane.HBoxBottom;
-import static gruppe8.gui.BackgroundPane.VBoxTop;
+import static gruppe8.gui.BackgroundPane.*;
 
-
+//Primær Login Side
 public class LogInScreen extends BorderPane {
 
     GUI main;

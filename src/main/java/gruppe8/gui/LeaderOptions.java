@@ -3,16 +3,17 @@ package gruppe8.gui;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import static gruppe8.gui.BackgroundPane.HBoxBottom;
-import static gruppe8.gui.BackgroundPane.VBoxTop;
+import static gruppe8.gui.BackgroundPane.*;
 
 
+//Ansvarlig Menu
 public class LeaderOptions extends BorderPane {
 
     GUI main;
@@ -47,7 +48,7 @@ public class LeaderOptions extends BorderPane {
         }
 
         //Headline Top Center
-        Text headline = new Text("Frivillig på Roskilde");
+        Text headline = new Text("Ansvarlig på Roskilde");
         headline.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
         //Note to self; Column Index, Row Index, Column Span, Row Span
         grid.add(headline, 4, 0, 2, 1); //Adding to Column 4 to ensure it stays with Roskilde Logo while resizing
@@ -55,13 +56,14 @@ public class LeaderOptions extends BorderPane {
         GridPane.setHalignment(headline, HPos.CENTER); //Ensure horizontal centering of node
 
         //Button Middle Left
-        Button button1 = new Button("Opret Frivillig");
+        Button button1 = new Button("Liste over Frivillige");
         grid.add(button1, 3,5); //Button located at headline-1 so it stays put during resizing of window
         GridPane.setValignment(button1, VPos.CENTER);
         GridPane.setHalignment(button1, HPos.LEFT);
+        button1.setOnAction(e -> main.moveToVolunteerList());
 
         //Button Middle Right
-        Button button2 = new Button("Frivillig Liste");
+        Button button2 = new Button("Liste over Boder");
         grid.add(button2, 6, 5); //Button located at headline+2 since headline spans 2 (Column 4+5)
         //This ensures that the button stays correctly placed, even during resizing of window
         GridPane.setValignment(button2, VPos.CENTER);

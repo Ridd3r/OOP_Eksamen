@@ -8,9 +8,10 @@ public class GUI extends Application {
 
     Stage stage;
     LogInScreen logInScreen;
-    LeaderOptions leadOptions;
-    VolunteerSchedule volunSchedule;
-    //HandleVolunteer hndlVolun;
+    LeaderOptions leaderOptions;
+    VolunteerSchedule volunteerSchedule;
+    CreateVolunteer createVolunteer;
+    VolunteerList volunteerList;
 
     @Override
     public void start(Stage primaryStage) {
@@ -24,15 +25,33 @@ public class GUI extends Application {
 
     }
 
-    public void moveToLeaderOptions() {
-        leadOptions = new LeaderOptions(this);
-        Scene leadOption = new Scene(leadOptions, 800,600);
-        stage.setScene(leadOption);
+    public void moveToLogInScreen() { //Har ikke fundet en løsning til at få log ud til at virke på tværs af scenes fra MenuBar
+        logInScreen = new LogInScreen(this); //Skaber en ny variabel til skift
+        Scene frontLogIn = new Scene(logInScreen, 800, 600); //Skaber scenen fra variablen
+        stage.setScene(frontLogIn); //Sætter scenen til den valgte
     }
 
-    public void moveToVolunteerSchedule() {
-        volunSchedule = new VolunteerSchedule(this);
-        Scene schedule = new Scene(volunSchedule, 800, 600);
+    public void moveToLeaderOptions() { //Skift til Ansvarlig
+        leaderOptions = new LeaderOptions(this);
+        Scene leaderOption = new Scene(leaderOptions, 800,600);
+        stage.setScene(leaderOption);
+    }
+
+    public void moveToVolunteerSchedule() { //Skift til Frivillig Skema
+        volunteerSchedule = new VolunteerSchedule(this);
+        Scene schedule = new Scene(volunteerSchedule, 800, 600);
         stage.setScene(schedule);
+    }
+
+    public void moveToCreateVolunteer() {
+        createVolunteer = new CreateVolunteer(this);
+        Scene createVolunteers = new Scene(createVolunteer, 800, 600);
+        stage.setScene(createVolunteers);
+    }
+
+    public void moveToVolunteerList() {
+        volunteerList = new VolunteerList(this);
+        Scene volunteerLists = new Scene(volunteerList, 800, 600);
+        stage.setScene(volunteerLists);
     }
 }

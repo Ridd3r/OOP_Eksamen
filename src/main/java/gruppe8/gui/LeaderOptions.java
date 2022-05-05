@@ -68,6 +68,7 @@ public class LeaderOptions extends BorderPane {
         //This ensures that the button stays correctly placed, even during resizing of window
         GridPane.setValignment(button2, VPos.CENTER);
         GridPane.setHalignment(button2, HPos.RIGHT);
+        button2.setOnAction(e -> main.moveToStallsList());
 
         return grid;
     }

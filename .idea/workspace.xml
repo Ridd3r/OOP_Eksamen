@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)">
-      <change afterPath="$PROJECT_DIR$/Additionals/DesignDiagram.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Additionals/SystemSequence.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStallWatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" afterDir="false" />
+    <list default="true" id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/BackgroundPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/BackgroundPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LeaderOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LeaderOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +36,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -94,7 +98,7 @@
       <updated>1651714985401</updated>
       <workItem from="1651714987930" duration="645000" />
       <workItem from="1651741076005" duration="209000" />
-      <workItem from="1651746305982" duration="10049000" />
+      <workItem from="1651746305982" duration="25303000" />
     </task>
     <task id="LOCAL-00001" summary="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)">
       <created>1651715587591</created>
@@ -103,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651715587591</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker">
+      <created>1651756965606</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651756965606</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +133,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)" />
+    <MESSAGE value="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker" />
   </component>
 </project>

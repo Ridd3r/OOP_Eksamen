@@ -12,6 +12,9 @@ public class GUI extends Application {
     VolunteerSchedule volunteerSchedule;
     CreateVolunteer createVolunteer;
     VolunteerList volunteerList;
+    StallsList stallsList;
+    CreateStall createStall;
+    StallSchedule stallSchedule;
 
     @Override
     public void start(Stage primaryStage) {
@@ -22,7 +25,6 @@ public class GUI extends Application {
         Scene frontLogIn = new Scene(logInScreen, 800, 600);
         primaryStage.setScene(frontLogIn);
         primaryStage.show();
-
     }
 
     public void moveToLogInScreen() { //Har ikke fundet en løsning til at få log ud til at virke på tværs af scenes fra MenuBar
@@ -53,5 +55,23 @@ public class GUI extends Application {
         volunteerList = new VolunteerList(this);
         Scene volunteerLists = new Scene(volunteerList, 800, 600);
         stage.setScene(volunteerLists);
+    }
+
+    public void moveToStallsList() {
+        stallsList = new StallsList(this);
+        Scene stallsLists = new Scene(stallsList, 800, 600);
+        stage.setScene(stallsLists);
+    }
+
+    public void moveToCreateStall() {
+        createStall = new CreateStall(this);
+        Scene createStalls = new Scene(createStall, 800, 600);
+        stage.setScene(createStalls);
+    }
+
+    public void moveToStallSchedule() {
+        stallSchedule = new StallSchedule(this);
+        Scene stallSchedules = new Scene(stallSchedule, 800,600);
+        stage.setScene(stallSchedules);
     }
 }

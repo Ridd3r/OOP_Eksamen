@@ -48,7 +48,7 @@ public class CreateVolunteer extends BorderPane {
 
         HBox buttons = new HBox(20);
         Button opret = new Button("Opret Frivillig");
-        //opret.setOnAction(e -> Frivillig.);
+        opret.setOnAction(e -> main.moveToVolunteerList());
         HBox.setHgrow(opret, Priority.ALWAYS);
         buttons.setAlignment(Pos.CENTER);
         buttons.getChildren().add(opret);

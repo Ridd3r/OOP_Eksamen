@@ -2,7 +2,6 @@ package gruppe8.gui;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -16,9 +15,7 @@ import javafx.scene.paint.Stop;
 
 
 //Opsætning til Baggrundselementer på tværs af scener
-public class BackgroundPane {
-
-    GUI main;
+public class BackgroundPane extends BorderPane {
 
     public static ImageView RoskildeLogo() {
         Image image1 = new Image("file:///C:/Users/JayHo/IdeaProjects/GUIMockUp/src/roskilde3.png");
@@ -65,8 +62,6 @@ public class BackgroundPane {
         MenuItem menuItemClose = new MenuItem("Exit");
         menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);
 
-        //logUd.setOnAction(e -> main.moveToLogInScreen());
-
         return menuBar;
     }
 
@@ -100,7 +95,7 @@ public class BackgroundPane {
         return hBox;
     }
 
-    public static BorderPane addBorderPane() { //Creating the borderpane used in the scene
+    public BorderPane addBorderPane() { //Creating the borderpane used in the scene
         BorderPane borderPane = new BorderPane();
 
         borderPane.setTop(VBoxTop()); //Adding in the top picture and Menu
@@ -128,4 +123,5 @@ public class BackgroundPane {
         )));
         return borderPane;
     }
+
 }

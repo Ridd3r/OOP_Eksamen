@@ -32,14 +32,17 @@ public class VolunteerList extends BorderPane {
         volunteerList.getItems().add("Test 2");
         volunteerList.getItems().add("Test 3");
 
-
         hBox.getChildren().add(volunteerList);
 
         Button opretFrivillig = new Button("Opret en Frivillig");
         opretFrivillig.setAlignment(Pos.BOTTOM_CENTER);
         opretFrivillig.setOnAction(e -> main.moveToCreateVolunteer());
 
-        vBox.getChildren().addAll(hBox, opretFrivillig);
+        Button tilbage = new Button("Tilbage Debugger");
+        tilbage.setAlignment(Pos.BOTTOM_CENTER);
+        tilbage.setOnAction(e -> main.moveToLogInScreen());
+
+        vBox.getChildren().addAll(hBox, opretFrivillig, tilbage);
         return vBox;
     }
 

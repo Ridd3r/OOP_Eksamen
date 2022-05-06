@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="ListViews skal måske fikses, ellers kun forbindelser." />
+    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Tilføjet vagt + metoder til datahandlerne">
+      <change afterPath="$PROJECT_DIR$/Additionals/Koncept-Klassediagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Additionals/DesignDiagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Additionals/Design-Klassediagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Additionals/DomainModel.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651782016480</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Tilføjet vagt + metoder til datahandlerne">
+      <created>1651859870400</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651859870400</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

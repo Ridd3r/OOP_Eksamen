@@ -49,7 +49,7 @@ public class StallsList extends BorderPane {
         TableView<Bod> stallsTableView = new TableView<>();
         stallsTableView.setPrefWidth(400);
 
-        ObservableList<Bod> items = FXCollections.observableArrayList(stallsHandler.dataArray);
+        ObservableList<Bod> items = FXCollections.observableArrayList(stallsHandler.dataArrayBod);
 
         TableColumn<Bod, String> stallNameColumn = new TableColumn<>("Bodens Navn");
         stallNameColumn.setCellValueFactory(new PropertyValueFactory<>("navn"));

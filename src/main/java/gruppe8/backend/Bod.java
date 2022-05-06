@@ -14,9 +14,6 @@ public class Bod {
     public ArrayList<Vagt> vagtArray = new ArrayList<>();
     public static DataHandlerFrivillig frivillig;
 
-
-
-
     // ----------- Methods -----------------
 
     public void fillArray() {

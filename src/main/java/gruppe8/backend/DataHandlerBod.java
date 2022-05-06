@@ -58,12 +58,12 @@ public class DataHandlerBod {
             while (line != null) {
                 String[] lines = line.split(",");
                 Bod bod = new Bod(lines[0]);
-                for (int i = 1; i < lines.length; i++) {
+                for (int i = 1; i < lines.length; i++) { //i starter på 1 for at springe navnet over så står på plads 0.
                     String[] dataFrivillig = lines[i].split(" ");
                     for (int n = 0; n < dataFrivillig.length; n++) {
                         if (!dataFrivillig[n].equals("")) {
                             int id = Integer.parseInt(dataFrivillig[n]);
-                            bod.addFrivilligToVagt(i, id);
+                            bod.addFrivilligToVagt(i-1, id); //Fordi i startede på 1 og ikke 0, er i højere end den skal være til dette formål
                         }
                     }
                 }
@@ -106,7 +106,7 @@ public class DataHandlerBod {
         String names = "";
         ArrayList<Bod> personArray = searchArray(name);
         for (Bod bod : personArray) {
-            names = names + bod.toString() + "\n\n";
+            names = names + bod.toString() + "\n";
         }
         if (names.equals("")) {
             return "Intet match";
@@ -118,8 +118,8 @@ public class DataHandlerBod {
     //Printer alle frivillige i dataArray
     public String visAlleBoder() {
         StringBuilder list = new StringBuilder();
-        for (Bod bod : dataArrayBod) {
-            list.append(bod.toString()).append("\n\n");
+        for (int i = 0; i < dataArrayBod.size(); i++) {
+            list.append(dataArrayBod.get(i).getNavn()+"\n");
         }
         if (list.toString().equals("")) {
             return "Ingen frivillige blev fundet.";
@@ -166,4 +166,15 @@ public class DataHandlerBod {
         return nameList;
     }
 
+    public String getVagt(int id, int vagtnr) {
+        String vagt = "";
+        for (int b = 0; b < dataArrayBod.size(); b++) {{
+                if(!dataArrayBod.get(b).vagtArray.get(vagtnr).personIdList.isEmpty()){
+                    vagt = vagt + dataArrayBod.get(b).getNavn();
+                }
+            }
+        }
+
+        return vagt;
+    }
 }

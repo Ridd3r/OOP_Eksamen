@@ -11,8 +11,12 @@ public class Main {
         writerB.openFile();
 
         Bod.setFrivillig(writerF);
+        System.out.println(writerB.getVagt(1,1));
+        System.out.println("hej :)))");
 
-        System.out.println(writerF.visAlle());
+        System.out.println();
+
+
 
         writerB.closeFile();
         writerF.closeFile();

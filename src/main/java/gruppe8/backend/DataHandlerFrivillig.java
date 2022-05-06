@@ -78,19 +78,22 @@ public class DataHandlerFrivillig {
                 return c;
             }
         });
-
     }
 
     //kunne måske return boolean value, så man har mulighed for at tjekke om en person blev tilføjet.
     //Add a person to dataArray - not file.
+    //Jacob edit -> Tilføjet handler så der kan skrives til filen også
     public void addFrivillig(String firstName, String lastName, int age, int number, String mail) {
+        DataHandlerFrivillig addFrivillig = new DataHandlerFrivillig();
+        addFrivillig.openFile();
         int id = 0;
         for(int i = 0; i < dataArray.size(); i++){
             if(dataArray.get(i).getID() > id) id = dataArray.get(i).getID();
         }
         id++;
         Frivillig person = new Frivillig(id, firstName, lastName, age, number, mail);
-        dataArray.add(person);
+        addFrivillig.dataArray.add(person);
+        addFrivillig.closeFile();
     }
 
     public void sletFrivillig(int id) {

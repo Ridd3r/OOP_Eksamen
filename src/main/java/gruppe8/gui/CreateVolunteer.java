@@ -1,5 +1,6 @@
 package gruppe8.gui;
 
+import gruppe8.backend.DataHandlerFrivillig;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -26,6 +27,7 @@ public class CreateVolunteer extends BorderPane {
 
     VBox createVolunteer() {
         VBox createVolunteerVBox = new VBox();
+        DataHandlerFrivillig createVolunteer = new DataHandlerFrivillig();
 
         HBox hTop = new HBox();
         Text schedule = new Text("Opret en Frivillig");
@@ -69,12 +71,17 @@ public class CreateVolunteer extends BorderPane {
 
         top.getChildren().add(allFields);
 
-        VBox buttons = new VBox();
+        HBox buttons = new HBox();
+        buttons.setSpacing(30);
         buttons.setAlignment(Pos.BOTTOM_CENTER);
         Button opret = new Button("Opret Frivillig");
-        opret.setOnAction(e -> main.moveToVolunteerList());
-        opret.setAlignment(Pos.BOTTOM_CENTER);
-        buttons.getChildren().add(opret);
+        opret.setOnAction(e -> createVolunteer.addFrivillig(firstNameTextField.getText(), lastNameTextField.getText(),
+                Integer.parseInt(ageTextField.getText()), Integer.parseInt(phoneNumberTextField.getText()), emailTextField.getText()));
+        opret.setAlignment(Pos.BOTTOM_LEFT);
+        Button goBackButton = new Button("Tilbage til Liste");
+        goBackButton.setAlignment(Pos.BOTTOM_RIGHT);
+        goBackButton.setOnAction(e -> main.moveToVolunteerList());
+        buttons.getChildren().addAll(opret, goBackButton);
 
         createVolunteerVBox.setAlignment(Pos.CENTER);
         createVolunteerVBox.setSpacing(30);

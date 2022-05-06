@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Merget finally complete">
+    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651873058855</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen.">
+      <created>1651875177093</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651875177093</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +215,7 @@
     <MESSAGE value="Mangler kun connections nu." />
     <MESSAGE value="ListViews skal måske fikses, ellers kun forbindelser." />
     <MESSAGE value="Merget finally complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merget finally complete" />
+    <MESSAGE value="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen." />
   </component>
 </project>

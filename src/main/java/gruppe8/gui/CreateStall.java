@@ -1,6 +1,5 @@
 package gruppe8.gui;
 
-import gruppe8.backend.Bod;
 import gruppe8.backend.DataHandlerBod;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

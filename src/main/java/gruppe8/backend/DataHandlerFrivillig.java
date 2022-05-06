@@ -102,16 +102,6 @@ public class DataHandlerFrivillig {
         }
     }
 
-    //return index of frivillig
-    public int frivilligIndex(Frivillig person) {
-        return dataArray.indexOf(person);
-    }
-
-    //Return index of frivillig matching
-    public int frivilligIndex(String firstName, String lastName, int age, int number, String mail) {
-        Frivillig person = new Frivillig(firstName, lastName, age, number, mail);
-        return dataArray.indexOf(person);
-    }
 
     public Frivillig getFrivillig(int id) {
         return dataArray.get(id);
@@ -173,6 +163,7 @@ public class DataHandlerFrivillig {
         }
         return nameList;
     }
+
 
 
 }

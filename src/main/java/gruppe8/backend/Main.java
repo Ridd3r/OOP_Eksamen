@@ -11,9 +11,9 @@ public class Main {
         writerB.openFile();
 
         Bod.setFrivillig(writerF);
+        System.out.println(writerB.getVagt(1,1));
 
-
-        System.out.println(writerB.visAlleBoder());
+        System.out.println();
 
 
 

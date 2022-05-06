@@ -43,6 +43,19 @@ public class Bod {
         return navn;
     }
 
+    public ArrayList<Integer> getVagter(int id) {
+        ArrayList<Integer> vagtnr = new ArrayList<>();
+        for (int n = 0; n < vagtArray.size(); n++) {
+            for (int c = 0; c < vagtArray.get(n).personIdList.size(); c++) {
+                if (vagtArray.get(n).personIdList.get(c) == id) {
+                    vagtnr.add(n);
+                }
+            }
+        }
+        return vagtnr;
+    }
+
+
 
     @Override
     public String toString() {
@@ -51,7 +64,7 @@ public class Bod {
             s = s + "\n  " + vagtArray.get(i).toString() + " ";
             for (int n = 0; n < vagtArray.get(i).personIdList.size(); n++) {
                 int id = vagtArray.get(i).personIdList.get(n);
-                s = s +"\n    "+ frivillig.getFrivillig(id).toString();
+                s = s + "\n    " + frivillig.getFrivillig(id).toString();
             }
 
         }

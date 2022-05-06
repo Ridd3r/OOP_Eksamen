@@ -11,7 +11,7 @@ public class DataHandlerFrivillig {
     BufferedWriter out;
     BufferedReader in;
     static String filePath = "src/main/java/gruppe8/Frivillige.txt";
-    private final ArrayList<Frivillig> dataArray = new ArrayList<>();
+    public final ArrayList<Frivillig> dataArray = new ArrayList<>();
 
     //opens default file "Frivillige" and stores the data in dataArray
     public void openFile() {

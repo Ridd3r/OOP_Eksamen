@@ -2,74 +2,74 @@ package gruppe8.gui;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import static gruppe8.gui.BackgroundPane.*;
 
-//Primær Login Side
-public class LogInScreen extends BorderPane {
+public class CreateStall extends BorderPane {
 
     GUI main;
 
-    public LogInScreen(GUI main) {
+    public CreateStall (GUI main) {
         this.main = main;
         setTop(VBoxTop());
-        setCenter(logInScreen());
+        setCenter(createStall());
         setBottom(HBoxBottom());
         setBackground(Background());
     }
 
-    VBox logInScreen() {
-        VBox logInScreenVBox = new VBox();
+    VBox createStall() {
+        VBox stalls = new VBox();
 
-        HBox topSign = new HBox();
-        Text logInSign = new Text("Velkommen til Roskilde Festival!");
-        topSign.setAlignment(Pos.TOP_CENTER);
-        logInSign.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
-        topSign.getChildren().add(logInSign);
+        HBox top = new HBox();
+        Text schedule = new Text("Opret en bod");
+        top.setAlignment(Pos.TOP_CENTER);
+        schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
+        top.getChildren().add(schedule);
 
-        VBox vBox = new VBox();
+        VBox vTop = new VBox();
 
-        HBox loginDetails = new HBox();
-        loginDetails.setAlignment(Pos.TOP_CENTER);
-        HBox.setHgrow(loginDetails, Priority.ALWAYS);
+        HBox allFields = new HBox();
+        allFields.setAlignment(Pos.TOP_CENTER);
+        HBox.setHgrow(allFields, Priority.ALWAYS);
+        allFields.setSpacing(20);
 
         VBox texts = new VBox();
         texts.setAlignment(Pos.CENTER_LEFT);
-        texts.setSpacing(10);
-        Text usernameText = new Text("Brugernavn: ");
-        Text passwordText = new Text("Adgangskode: ");
-        texts.getChildren().addAll(usernameText, passwordText);
+        texts.setSpacing(18);
+        Text stallNameText = new Text("Bodens Navn:");
+        stallNameText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        texts.getChildren().add(stallNameText);
 
         VBox textFields = new VBox();
         textFields.setAlignment(Pos.CENTER_RIGHT);
-        textFields.setSpacing(10);
-        TextField usernameTextField = new TextField("Indtast brugernavn");
-        TextField passwordTextField = new TextField("Indtast adgangskode");
-        textFields.getChildren().addAll(usernameTextField, passwordTextField);
+        textFields.setSpacing(18);
+        TextField stallNameTextField = new TextField("Indtast bodens navn");
+        textFields.getChildren().add(stallNameTextField);
 
-        loginDetails.getChildren().addAll(texts, textFields);
+        allFields.getChildren().addAll(texts, textFields);
 
-        vBox.getChildren().add(loginDetails);
+        vTop.getChildren().add(allFields);
 
-        HBox button = new HBox();
+
+        VBox button = new VBox();
         button.setAlignment(Pos.BOTTOM_CENTER);
-        button.setSpacing(30);
-        Button loginVolunteer = new Button("Frivillig");
-        loginVolunteer.setAlignment(Pos.BOTTOM_LEFT);
-        loginVolunteer.setOnAction(e -> main.moveToVolunteerSchedule());
-        Button loginLeader = new Button("Ansvarlig");
-        loginLeader.setAlignment(Pos.BOTTOM_RIGHT);
-        loginLeader.setOnAction(e -> main.moveToLeaderOptions());
-        button.getChildren().addAll(loginVolunteer, loginLeader);
+        Button createStallButton = new Button("Opret bod");
+        createStallButton.setAlignment(Pos.BOTTOM_CENTER);
+        createStallButton.setOnAction(e -> main.moveToStallsList());
+        button.getChildren().add(createStallButton);
 
-        logInScreenVBox.setAlignment(Pos.CENTER);
-        logInScreenVBox.setSpacing(50);
-        logInScreenVBox.getChildren().addAll(topSign, vBox, button);
-        return logInScreenVBox;
+        stalls.setAlignment(Pos.CENTER);
+        stalls.setSpacing(50);
+        stalls.getChildren().addAll(top, vTop, button);
+
+        return stalls;
     }
 
     MenuBar getMenuBar() {
@@ -109,7 +109,7 @@ public class LogInScreen extends BorderPane {
         menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);
 
         MenuItem menuItemReturn = new MenuItem("Gå tilbage");
-        menuItemReturn.setOnAction(e -> main.moveToLogInScreen());
+        menuItemReturn.setOnAction(e -> main.moveToStallsList());
         MenuItem menuItemLogUd = new MenuItem("Log ud");
         menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
         regret.getItems().addAll(menuItemReturn, menuItemLogUd);

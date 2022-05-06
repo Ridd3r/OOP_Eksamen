@@ -2,17 +2,16 @@ package gruppe8.gui;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import static gruppe8.gui.BackgroundPane.*;
 
-import static gruppe8.gui.BackgroundPane.HBoxBottom;
-import static gruppe8.gui.BackgroundPane.VBoxTop;
-
-
+//Ansvarlig Menu
 public class LeaderOptions extends BorderPane {
 
     GUI main;
@@ -20,53 +19,112 @@ public class LeaderOptions extends BorderPane {
     public LeaderOptions(GUI main){
         this.main = main;
         setTop(VBoxTop());
-        setCenter(leaderGridPane());
+        setCenter(leaderOptions());
         setBottom(HBoxBottom());
+        setBackground(Background());
     }
 
-    GridPane leaderGridPane() { //Creating the GridPane added in the center of the BorderPane
-        GridPane grid = new GridPane();
-        grid.setHgap(5);
-        grid.setVgap(5);
-        grid.setPadding(new Insets(10, 10, 10, 10));
+    VBox leaderOptions() {
+        VBox leaderOptionsVBox = new VBox();
 
-        //For loop to resize columns constantly if window is resized
-        //i < 10 because there is 10 columns defined in the grid
-        for (int i = 0; i < 10; i++) {
-            ColumnConstraints cc = new ColumnConstraints();
-            cc.setHgrow(Priority.ALWAYS);
-            grid.getColumnConstraints().add(cc);
-        }
+        HBox topSign = new HBox();
+        Text roskildeLeaderSign = new Text("Ansvarlig på Roskilde");
+        topSign.setAlignment(Pos.TOP_CENTER);
+        roskildeLeaderSign.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
+        topSign.getChildren().add(roskildeLeaderSign);
 
-        //For loop to resize rows constantly if window is resized
-        //j < 10 because there is 10 rows defined in the grid
-        for (int i = 0; i < 10; i++) {
-            RowConstraints rc = new RowConstraints();
-            rc.setVgrow(Priority.ALWAYS);
-            grid.getRowConstraints().add(rc);
-        }
+        VBox vBox = new VBox();
 
-        //Headline Top Center
-        Text headline = new Text("Frivillig på Roskilde");
-        headline.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
-        //Note to self; Column Index, Row Index, Column Span, Row Span
-        grid.add(headline, 4, 0, 2, 1); //Adding to Column 4 to ensure it stays with Roskilde Logo while resizing
-        GridPane.setValignment(headline, VPos.CENTER); //Ensure vertical centering of node
-        GridPane.setHalignment(headline, HPos.CENTER); //Ensure horizontal centering of node
+        HBox options = new HBox();
+        options.setSpacing(20);
+        options.setAlignment(Pos.TOP_CENTER);
+        HBox.setHgrow(options, Priority.ALWAYS);
 
-        //Button Middle Left
-        Button button1 = new Button("Opret Frivillig");
-        grid.add(button1, 3,5); //Button located at headline-1 so it stays put during resizing of window
-        GridPane.setValignment(button1, VPos.CENTER);
-        GridPane.setHalignment(button1, HPos.LEFT);
+        VBox volunteerTexts = new VBox();
+        volunteerTexts.setAlignment(Pos.CENTER_LEFT);
+        volunteerTexts.setSpacing(20);
+        Text volunteerText = new Text("Håndtér Frivillige");
+        volunteerText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        Button handleVolunteerButton = new Button("Håndtér Frivillige");
+        handleVolunteerButton.setOnAction(e -> main.moveToVolunteerList());
+        volunteerTexts.getChildren().addAll(volunteerText, handleVolunteerButton);
 
-        //Button Middle Right
-        Button button2 = new Button("Frivillig Liste");
-        grid.add(button2, 6, 5); //Button located at headline+2 since headline spans 2 (Column 4+5)
-        //This ensures that the button stays correctly placed, even during resizing of window
-        GridPane.setValignment(button2, VPos.CENTER);
-        GridPane.setHalignment(button2, HPos.RIGHT);
+        VBox stallsTexts = new VBox();
+        stallsTexts.setAlignment(Pos.CENTER_RIGHT);
+        stallsTexts.setSpacing(20);
+        Text stallsText = new Text("Håndtér Boder og Vagtplaner");
+        stallsText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        Button handleStallsButton = new Button("Håndtér Boder og Vagtplaner");
+        handleStallsButton.setOnAction(e -> main.moveToStallsList());
+        stallsTexts.getChildren().addAll(stallsText, handleStallsButton);
 
-        return grid;
+        options.getChildren().addAll(volunteerTexts, stallsTexts);
+
+        vBox.getChildren().add(options);
+
+        leaderOptionsVBox.setAlignment(Pos.CENTER);
+        leaderOptionsVBox.setSpacing(70);
+        leaderOptionsVBox.getChildren().addAll(topSign, vBox);
+        return leaderOptionsVBox;
+    }
+
+    MenuBar getMenuBar() {
+        MenuBar menuBar = new MenuBar();
+
+        Menu menu = new Menu("Menu");
+        Menu regret = new Menu("Fortryd");
+        Menu quickNav = new Menu("Genvej");
+        menuBar.getMenus().addAll(quickNav, menu, regret);
+
+        MenuItem menuItemLogScreen = new MenuItem("Login Skærm");
+        menuItemLogScreen.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemVSchedule = new MenuItem("Vagtplan Frivillig");
+        menuItemVSchedule.setOnAction(e -> main.moveToVolunteerSchedule());
+        MenuItem menuItemLOptions = new MenuItem("Ansvarlig Muligheder");
+        menuItemLOptions.setOnAction(e -> main.moveToLeaderOptions());
+        MenuItem menuItemVList = new MenuItem("Liste over Frivillige");
+        menuItemVList.setOnAction(e -> main.moveToVolunteerList());
+        MenuItem menuItemVCreate = new MenuItem("Opret Frivillig");
+        menuItemVCreate.setOnAction(e -> main.moveToCreateVolunteer());
+        MenuItem menuItemSList = new MenuItem("Liste over Boder");
+        menuItemSList.setOnAction(e -> main.moveToStallsList());
+        MenuItem menuItemSCreate = new MenuItem("Opret Bod");
+        menuItemSCreate.setOnAction(e -> main.moveToCreateStall());
+        MenuItem menuItemSchedule = new MenuItem("Vagtplan Bod");
+        menuItemSchedule.setOnAction(e -> main.moveToStallSchedule());
+        MenuItem menuItemCWatch = new MenuItem("Opret Vagt");
+        menuItemCWatch.setOnAction(e -> main.moveToCreateStallWatch());
+        quickNav.getItems().addAll(menuItemLogScreen, menuItemVSchedule, menuItemLOptions, menuItemVList,
+                menuItemVCreate, menuItemSList, menuItemSCreate, menuItemSchedule, menuItemCWatch);
+
+        MenuItem menuItemHelp = new MenuItem("Hjælp");
+        menuItemHelp.setOnAction(e -> main.menuHelp());
+        MenuItem menuItemBack = new MenuItem("Placeholder");
+        MenuItem menuItemClose = new MenuItem("Luk programmet");
+        menuItemClose.setOnAction(e -> main.menuClose());
+        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);
+
+        MenuItem menuItemReturn = new MenuItem("Gå tilbage");
+        menuItemReturn.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemLogUd = new MenuItem("Log ud");
+        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
+        regret.getItems().addAll(menuItemReturn, menuItemLogUd);
+
+        return menuBar;
+    }
+
+    VBox VBoxTop() {
+        HBox hBoxTopImg = new HBox(); //HBox to center the Roskilde Logo Image
+        hBoxTopImg.setAlignment(Pos.CENTER);
+        hBoxTopImg.getChildren().add(RoskildeLogo());
+
+        HBox hBoxMenu = new HBox(); //Horizontal box to try and align the menu to the right instead of left
+        //Something does not add up - it appears as a menuButton instead of a menuBar which is what is called
+        hBoxMenu.setAlignment(Pos.TOP_RIGHT);
+        hBoxMenu.getChildren().add(getMenuBar());
+
+        VBox vBoxTop = new VBox(); //Vertical Box to get both image and menuBar together in the top pane
+        vBoxTop.getChildren().addAll(hBoxMenu, hBoxTopImg);
+        return vBoxTop;
     }
 }

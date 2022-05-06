@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/object-diagram
+left to right direction
+
+object Frivillig {
+id: int
+age: int
+firstName: String
+lastName: String
+phoneNumber: int
+emil: String
+----
+
+}
+object Vagt {
+tidsrum: Tider
+dag: Dage
+personIdList: ArrayList<Integer>
+----
+}
+object Bod {
+navn: String
+vagtArray: ArrayList<Vagt>
+frivillig: DataHandlerFrivillig
+----
+addFrivilligToVagt()
+setFrivillig()
+}
+object DataHandlerBod {
+dataArrayBod: ArrayList<Bod>
+----
+makeDataArray()
+addBod()
+sletBod()
+findBod()
+visAlleBoder()
+changeBod()
+getVagt()
+}
+object DataHandlerFrivillig {
+dataArray: ArrayList<Frivillig>
+----
+makeDataArray()
+addFrivillig()
+sletFrivillig()
+getFrivillig()
+findFrivillig()
+visAlle()
+
+}
+
+/' Herunder kommer pile '/
+
+DataHandlerFrivillig "1"-->"         *" Frivillig
+Bod "1" o-- "     1" DataHandlerFrivillig
+Bod "1" o-- "*" Vagt
+DataHandlerBod "1" --> "*" Bod
+Vagt " *" ..> "1" Frivillig
+
+
+
+@enduml

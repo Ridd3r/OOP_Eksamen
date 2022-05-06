@@ -7,7 +7,8 @@ public class DataHandlerBod {
     BufferedWriter out;
     BufferedReader in;
     static String filePath = "src/main/java/gruppe8/Boder.txt";
-    public final ArrayList<Bod> dataArray = new ArrayList<>();
+    public final ArrayList<Bod> dataArrayBod = new ArrayList<>();
+
 
     //opens default file "Boder" and stores the data in dataArray
     public void openFile() {
@@ -25,15 +26,20 @@ public class DataHandlerBod {
 
     public void closeFile() {
         try {
-            for (int i = 0; i < dataArray.size(); i++) {
-                if (!dataArray.get(i).getNavn().equals("Test")) { //Spring Test over så den ikke bliver dubleret
-                    out.write(dataArray.get(i).getNavn() +
-                            "," + dataArray.get(i).getAlderskrav() +
-                            "," + dataArray.get(i).getBeskrivelse() +
-                            "\n"); // start næste bod på næste linje
+            for (int i = 0; i < dataArrayBod.size(); i++) {
+                String s = "";
+                s = s + dataArrayBod.get(i).getNavn();
+                for (int n = 0; n < dataArrayBod.get(i).vagtArray.size(); n++) {
+                    s = s + ",";
+                    for (int c = 0; c < dataArrayBod.get(i).vagtArray.get(n).personIdList.size(); c++) {
+                        if (c > 0) s += " ";
+                        s = s + dataArrayBod.get(i).vagtArray.get(n).personIdList.get(c);
+                    }
                 }
+                s = s + "\n";
+                out.write(s);
             }
-            out.write("Test,666,Denne bod er en test >:D"); //Tilføj Test som sidste i listen.
+
             out.flush();
             out.close();
         } catch (IOException e) {
@@ -48,25 +54,28 @@ public class DataHandlerBod {
     private void makeDataArray() {
         try {
             String line;
-            do {
-                line = in.readLine();
-                if (line != null) {
-                    String[] lines = line.split(",");
-                    int alderskrav = Integer.parseInt(lines[1]);
-                    Bod bod = new Bod(lines[0]);
-                    bod.setAlderskrav(alderskrav);
-                    bod.setBeskrivelse(lines[2]);
-                    dataArray.add(bod);
+            line = in.readLine();
+            while (line != null) {
+                String[] lines = line.split(",");
+                Bod bod = new Bod(lines[0]);
+                for (int i = 1; i < lines.length; i++) { //i starter på 1 for at springe navnet over så står på plads 0.
+                    String[] dataFrivillig = lines[i].split(" ");
+                    for (int n = 0; n < dataFrivillig.length; n++) {
+                        if (!dataFrivillig[n].equals("")) {
+                            int id = Integer.parseInt(dataFrivillig[n]);
+                            bod.addFrivilligToVagt(i-1, id); //Fordi i startede på 1 og ikke 0, er i højere end den skal være til dette formål
+                        }
+                    }
                 }
+                dataArrayBod.add(bod);
+                line = in.readLine();
             }
-            while (line != null);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        dataArray.sort((f1, f2) -> {
-                return f1.getNavn().compareToIgnoreCase(f2.getNavn()); //Den her sammenligning skal gerne give en int som er >=< end 0.
+        dataArrayBod.sort((f1, f2) -> {
+            return f1.getNavn().compareToIgnoreCase(f2.getNavn()); //Den her sammenligning skal gerne give en int som er >=< end 0.
         });
 
     }
@@ -74,31 +83,21 @@ public class DataHandlerBod {
     //Add bod to dataArray - not file.
     public void addBod(String name) {
         Bod bod = new Bod(name);
-        dataArray.add(bod);
-    }
-    public void addBod(String name, int alder) {
-        Bod bod = new Bod(name);
-        bod.setAlderskrav(alder);
-        dataArray.add(bod);
-    }
-    public void addBod(String name, int alder, String beskrivelse) {
-        Bod bod = new Bod(name);
-        bod.setAlderskrav(alder);
-        bod.setBeskrivelse(beskrivelse);
+        dataArrayBod.add(bod);
     }
 
-   //Sletter match. Ignorere kun store/små bogstaver
+    //Sletter match. Ignorere kun store/små bogstaver
     public void sletBod(String name) {
         int slettet = 0;
-        for(int i = 0; i < dataArray.size();) {
-            if(dataArray.get(i).getNavn().equalsIgnoreCase(name)) {
-                dataArray.remove(i);
+        for (int i = 0; i < dataArrayBod.size(); ) {
+            if (dataArrayBod.get(i).getNavn().equalsIgnoreCase(name)) {
+                dataArrayBod.remove(i);
                 ++slettet;
             } else {
                 i++;
             }
         }
-        System.out.println("Slettet antal boder: "+ slettet);
+        System.out.println("Slettet antal boder: " + slettet);
     }
 
     //return a string describing Frivillige who's first or lastname matches name
@@ -107,7 +106,7 @@ public class DataHandlerBod {
         String names = "";
         ArrayList<Bod> personArray = searchArray(name);
         for (Bod bod : personArray) {
-            names = names + bod.toString() + "\n\n";
+            names = names + bod.toString() + "\n";
         }
         if (names.equals("")) {
             return "Intet match";
@@ -117,10 +116,10 @@ public class DataHandlerBod {
     }
 
     //Printer alle frivillige i dataArray
-    public String visAlle() {
+    public String visAlleBoder() {
         StringBuilder list = new StringBuilder();
-        for (Bod bod : dataArray) {
-            list.append(bod.toString()).append("\n\n");
+        for (int i = 0; i < dataArrayBod.size(); i++) {
+            list.append(dataArrayBod.get(i).getNavn()+"\n");
         }
         if (list.toString().equals("")) {
             return "Ingen frivillige blev fundet.";
@@ -130,24 +129,22 @@ public class DataHandlerBod {
     }
 
     //changes the first bod matching "bodToChange"
-   public void changeBod(String bodToChange, String name, int alder, String beskrivelse) {
-       int index = 0;
-       for(int i = 0; i < dataArray.size(); i++) {
-           if(dataArray.get(i).getNavn().equalsIgnoreCase(bodToChange)) {
-               index = i;
-               Bod bod = new Bod(name);
-               bod.setBeskrivelse(beskrivelse);
-               bod.setNavn(name);
-               bod.setAlderskrav(alder);
-               dataArray.set(index, bod);
-               break; //Kun den første -> så break
-           }
-       }
+    public void changeBod(String bodToChange, String name) {
+        int index = 0;
+        for (int i = 0; i < dataArrayBod.size(); i++) {
+            if (dataArrayBod.get(i).getNavn().equalsIgnoreCase(bodToChange)) {
+                index = i;
+                Bod bod = new Bod(name);
+                bod.setNavn(name);
+                dataArrayBod.set(index, bod);
+                break; //Kun den første -> så break
+            }
+        }
 
     }
 
-    public Bod getBod(int index){
-        return dataArray.get(index);
+    public Bod getBod(int index) {
+        return dataArrayBod.get(index);
     }
 
     /*Returns ArrayList containing all boder which name includes the searchWord or letter.
@@ -155,18 +152,29 @@ public class DataHandlerBod {
     private ArrayList<Bod> searchArray(String name) {
         ArrayList<Bod> nameList = new ArrayList<>();
         String[] parts = name.split(" "); //Hvis name fx er "Pizza bod" så oprettes string[] pizza og bod
-        for (int i = 0; i < dataArray.size(); i++) {
+        for (int i = 0; i < dataArrayBod.size(); i++) {
             boolean b = true; //Som udgangspunkt antager vi at der er søgt rigtigt
             for (int j = 0; j < parts.length; j++) {
                 if (!parts[j].equals("")) { //Er det et mellemrum så søger vi ikke længere
-                    if (!dataArray.get(i).getNavn().toLowerCase().contains(parts[j].toLowerCase())) { //findes det i navnet så tilføjes bod
-                            b = false;
+                    if (!dataArrayBod.get(i).getNavn().toLowerCase().contains(parts[j].toLowerCase())) { //findes det i navnet så tilføjes bod
+                        b = false;
                     }
                 }
             }
-            if (b) nameList.add(dataArray.get(i));
+            if (b) nameList.add(dataArrayBod.get(i));
         }
         return nameList;
     }
 
+    public String getVagt(int id, int vagtnr) {
+        String vagt = "";
+        for (int b = 0; b < dataArrayBod.size(); b++) {{
+                if(!dataArrayBod.get(b).vagtArray.get(vagtnr).personIdList.isEmpty()){
+                    vagt = vagt + dataArrayBod.get(b).getNavn();
+                }
+            }
+        }
+
+        return vagt;
+    }
 }

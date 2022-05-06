@@ -26,21 +26,18 @@ public class DataHandlerFrivillig {
     }
 
     /* Will write dataArray to text file before closing.
-    Får en mærkelig fejl hvis den sidste person I listen har en alder som slutter på 0. fx 20 eller 110.
-    Derfor har jeg tilføjet en test/admin med alder 666 som altid skal væres den sidste person i arrayListen.
      */
     public void closeFile() {
         try {
             for (int i = 0; i < dataArray.size(); i++) {
-                if (!dataArray.get(i).getFirstName().equals("Test")) { //Spring Test over her så han ikke kommer midt i listen
-                    out.write(dataArray.get(i).getFirstName() +
+                    out.write(dataArray.get(i).getID() +
+                            "," + dataArray.get(i).getFirstName() +
                             "," + dataArray.get(i).getLastName() +
                             "," + dataArray.get(i).getAge() +
                             "," + dataArray.get(i).getPhoneNumber() +
                             "," + dataArray.get(i).getEmail() + "\n");
                 }
-            }
-            out.write("Test,Admin,666,12345678,Test@Admin.lol"); //Tilføj Test som sidste frivillig i listen. Han skal altid være sidst
+
             out.flush();
             out.close();
         } catch (IOException e) {
@@ -59,9 +56,10 @@ public class DataHandlerFrivillig {
                 line = in.readLine();
                 if (line != null) {
                     String[] lines = line.split(",");
-                    int age = Integer.parseInt(lines[2]);
-                    int number = Integer.parseInt(lines[3]);
-                    Frivillig person = new Frivillig(lines[0], lines[1], age, number, lines[4]);
+                    int id = Integer.parseInt(lines[0]);
+                    int age = Integer.parseInt(lines[3]);
+                    int number = Integer.parseInt(lines[4]);
+                    Frivillig person = new Frivillig(id, lines[1], lines[2], age, number, lines[5]);
                     dataArray.add(person);
                 }
             }
@@ -86,31 +84,27 @@ public class DataHandlerFrivillig {
     //kunne måske return boolean value, så man har mulighed for at tjekke om en person blev tilføjet.
     //Add a person to dataArray - not file.
     public void addFrivillig(String firstName, String lastName, int age, int number, String mail) {
-        Frivillig person = new Frivillig(firstName, lastName, age, number, mail);
+        int id = 0;
+        for(int i = 0; i < dataArray.size(); i++){
+            if(dataArray.get(i).getID() > id) id = dataArray.get(i).getID();
+        }
+        id++;
+        Frivillig person = new Frivillig(id, firstName, lastName, age, number, mail);
         dataArray.add(person);
     }
 
-    public void sletFrivillig(Frivillig person) {
-        dataArray.remove(person);
+    public void sletFrivillig(int id) {
+        for(int i = 0; i < dataArray.size(); i++){
+            if(dataArray.get(i).getID() == id) {
+                dataArray.remove(i);
+                break;
+            }
+        }
     }
 
-    public void sletFrivillig(int index) {
-        dataArray.remove(index);
-    }
 
-    //return index of frivillig
-    public int frivilligIndex(Frivillig person) {
-        return dataArray.indexOf(person);
-    }
-
-    //Return index of frivillig matching
-    public int frivilligIndex(String firstName, String lastName, int age, int number, String mail) {
-        Frivillig person = new Frivillig(firstName, lastName, age, number, mail);
-        return dataArray.indexOf(person);
-    }
-
-    public Frivillig getFrivillig(int index) {
-        return dataArray.get(index);
+    public Frivillig getFrivillig(int id) {
+        return dataArray.get(id);
     }
 
     //return a string describing Frivillige who's first or lastname matches name
@@ -168,6 +162,7 @@ public class DataHandlerFrivillig {
         }
         return nameList;
     }
+
 
 
 }

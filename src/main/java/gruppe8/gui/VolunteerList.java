@@ -20,7 +20,6 @@ import static gruppe8.gui.BackgroundPane.*;
 public class VolunteerList extends BorderPane {
 
     GUI main;
-    static String filePath = "src/main/java/gruppe8/Frivillige.txt";
 
     public VolunteerList(GUI main) {
         this.main = main;

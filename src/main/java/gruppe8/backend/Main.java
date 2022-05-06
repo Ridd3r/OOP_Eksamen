@@ -1,5 +1,7 @@
 package gruppe8.backend;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         // write your code here
@@ -7,8 +9,14 @@ public class Main {
         DataHandlerFrivillig writerF = new DataHandlerFrivillig();
         writerF.openFile();
         writerB.openFile();
-        Vagt vagt = new Vagt(writerF.getFrivillig(1),writerB.getBod(0), Vagt.Tider.middag, Vagt.Dage.fredag);
-        System.out.println(vagt.toString());
+
+        Bod.setFrivillig(writerF);
+        System.out.println(writerB.getVagt(1,1));
+        System.out.println("hej :)))");
+
+        System.out.println();
+
+
 
         writerB.closeFile();
         writerF.closeFile();

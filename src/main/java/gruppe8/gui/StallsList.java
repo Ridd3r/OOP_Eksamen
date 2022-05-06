@@ -47,22 +47,18 @@ public class StallsList extends BorderPane {
         stallsHandler.openFile();
 
         TableView<Bod> stallsTableView = new TableView<>();
-        stallsTableView.setPrefWidth(400);
+        stallsTableView.setPrefWidth(200);
 
         ObservableList<Bod> items = FXCollections.observableArrayList(stallsHandler.dataArrayBod);
 
         TableColumn<Bod, String> stallNameColumn = new TableColumn<>("Bodens Navn");
         stallNameColumn.setCellValueFactory(new PropertyValueFactory<>("navn"));
-        TableColumn<Bod, String> stallAgeRestrictionColumn = new TableColumn<>("Aldersgrænse");
-        stallAgeRestrictionColumn.setCellValueFactory(new PropertyValueFactory<>("alderskrav"));
-        TableColumn<Bod, String> stallDescriptionColumn = new TableColumn<>("Beskrivelse");
-        stallDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("beskrivelse"));
 
         stallsTableView.setItems(items);
 
-        stallsTableView.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+        stallsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        stallsTableView.getColumns().addAll(stallNameColumn, stallAgeRestrictionColumn, stallDescriptionColumn);
+        stallsTableView.getColumns().add(stallNameColumn);
 
         hBox.getChildren().add(stallsTableView);
 

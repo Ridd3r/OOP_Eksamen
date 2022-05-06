@@ -1,2 +1,6 @@
 Bjarnes pølser,,1,,1 1 1 1,1,1 1,,,,,,,,1 3,,,,,,,
+Burger King,,,,,,,,,,,,,,,,,,,,,
 BurgerHjørnet,,,,,,,1,,0,,,2,3,,,,,1,,,1
+Jespers TacoShop,,,,,,,,,,,,,,,,,,,,,
+McDonalds,,,,,,,,,,,,,,,,,,,,,
+Sunset Boulevard,,,,,,,,,,,,,,,,,,,,,

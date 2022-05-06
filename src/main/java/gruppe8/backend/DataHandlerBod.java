@@ -81,9 +81,13 @@ public class DataHandlerBod {
     }
 
     //Add bod to dataArray - not file.
+    //Jacob Edit -> Nows adds to array and then file.
     public void addBod(String name) {
+        DataHandlerBod addBod = new DataHandlerBod();
+        addBod.openFile();
         Bod bod = new Bod(name);
-        dataArrayBod.add(bod);
+        addBod.dataArrayBod.add(bod);
+        addBod.closeFile();
     }
 
     //Sletter match. Ignorere kun store/små bogstaver

@@ -1,5 +1,7 @@
 package gruppe8.gui;
 
+import gruppe8.backend.Bod;
+import gruppe8.backend.DataHandlerBod;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -26,6 +28,7 @@ public class CreateStall extends BorderPane {
 
     VBox createStall() {
         VBox stalls = new VBox();
+        DataHandlerBod createStall = new DataHandlerBod();
 
         HBox top = new HBox();
         Text schedule = new Text("Opret en bod");
@@ -57,13 +60,16 @@ public class CreateStall extends BorderPane {
 
         vTop.getChildren().add(allFields);
 
-
-        VBox button = new VBox();
+        HBox button = new HBox();
+        button.setSpacing(30);
         button.setAlignment(Pos.BOTTOM_CENTER);
         Button createStallButton = new Button("Opret bod");
-        createStallButton.setAlignment(Pos.BOTTOM_CENTER);
-        createStallButton.setOnAction(e -> main.moveToStallsList());
-        button.getChildren().add(createStallButton);
+        createStallButton.setAlignment(Pos.BOTTOM_RIGHT);
+        createStallButton.setOnAction(e -> createStall.addBod((stallNameTextField.getText())));
+        Button goBackButton = new Button("Se Liste");
+        goBackButton.setAlignment(Pos.BOTTOM_RIGHT);
+        goBackButton.setOnAction(e -> main.moveToStallsList());
+        button.getChildren().addAll(createStallButton, goBackButton);
 
         stalls.setAlignment(Pos.CENTER);
         stalls.setSpacing(50);

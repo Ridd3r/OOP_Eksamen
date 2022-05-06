@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="Små detaljer samt menuBar er nu fikset og virker.">
+    <list default="true" id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="ListViews skal måske fikses, ellers kun forbindelser.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/BackgroundPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/BackgroundPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStallWatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStallWatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LeaderOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LeaderOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RunManager">
@@ -100,7 +91,8 @@
       <updated>1651714985401</updated>
       <workItem from="1651714987930" duration="645000" />
       <workItem from="1651741076005" duration="209000" />
-      <workItem from="1651746305982" duration="45821000" />
+      <workItem from="1651746305982" duration="45999000" />
+      <workItem from="1651836428753" duration="358000" />
     </task>
     <task id="LOCAL-00001" summary="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)">
       <created>1651715587591</created>
@@ -137,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651779693985</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ListViews skal måske fikses, ellers kun forbindelser.">
+      <created>1651795770112</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651795770112</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +147,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Merging" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -160,6 +171,8 @@
     <MESSAGE value="Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer." />
     <MESSAGE value="Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id" />
     <MESSAGE value="Små detaljer samt menuBar er nu fikset og virker." />
-    <option name="LAST_COMMIT_MESSAGE" value="Små detaljer samt menuBar er nu fikset og virker." />
+    <MESSAGE value="Mangler kun connections nu." />
+    <MESSAGE value="ListViews skal måske fikses, ellers kun forbindelser." />
+    <option name="LAST_COMMIT_MESSAGE" value="ListViews skal måske fikses, ellers kun forbindelser." />
   </component>
 </project>

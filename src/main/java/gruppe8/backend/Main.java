@@ -12,6 +12,7 @@ public class Main {
 
         Bod.setFrivillig(writerF);
         System.out.println(writerB.getVagt(1,1));
+        System.out.println("hej :)))");
 
         System.out.println();
 

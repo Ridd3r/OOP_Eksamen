@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 import static gruppe8.gui.BackgroundPane.*;
 
@@ -16,75 +17,102 @@ public class LogInScreen extends BorderPane {
     public LogInScreen(GUI main) {
         this.main = main;
         setTop(VBoxTop());
-        setCenter(logInGrid());
+        setCenter(logInScreen());
         setBottom(HBoxBottom());
+        setBackground(Background());
     }
 
-    GridPane logInGrid() {
-        GridPane logInGrid = new GridPane();
-        logInGrid.setAlignment(Pos.CENTER);
-        logInGrid.setVgap(5);
+    VBox logInScreen() {
+        VBox logInScreenVBox = new VBox();
 
-        //For loop to resize columns constantly if window is resized
-        //i < 10 because there is 10 columns defined in the grid
-        for (int i = 0; i < 10; i++) {
-            ColumnConstraints cc = new ColumnConstraints();
-            cc.setHgrow(Priority.ALWAYS);
-            logInGrid.getColumnConstraints().add(cc);
-        }
+        HBox topSign = new HBox();
+        Text logInSign = new Text("Velkommen til Roskilde Festival!");
+        topSign.setAlignment(Pos.TOP_CENTER);
+        logInSign.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
+        topSign.getChildren().add(logInSign);
 
-        //For loop to resize rows constantly if window is resized
-        //j < 10 because there is 10 rows defined in the grid
-        for (int i = 0; i < 10; i++) {
-            RowConstraints rc = new RowConstraints();
-            rc.setVgrow(Priority.ALWAYS);
-            logInGrid.getRowConstraints().add(rc);
-        }
+        VBox vBox = new VBox();
 
-        Label welcome = new Label("Log venligst ind");
-        welcome.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
-        welcome.setAlignment(Pos.CENTER);
-        logInGrid.add(welcome, 5, 0, 1, 1);
+        HBox loginDetails = new HBox();
+        loginDetails.setAlignment(Pos.TOP_CENTER);
+        HBox.setHgrow(loginDetails, Priority.ALWAYS);
 
-        Label username = new Label("Brugernavn: ", new TextField());
-        username.setContentDisplay(ContentDisplay.RIGHT);
-        username.setGraphicTextGap(10);
-        username.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
-        logInGrid.add(username, 4,1, 2, 1);
+        VBox texts = new VBox();
+        texts.setAlignment(Pos.CENTER_LEFT);
+        texts.setSpacing(10);
+        Text usernameText = new Text("Brugernavn: ");
+        Text passwordText = new Text("Adgangskode: ");
+        texts.getChildren().addAll(usernameText, passwordText);
 
-        Label password = new Label("Password: ", new TextField());
-        password.setContentDisplay(ContentDisplay.RIGHT);
-        password.setGraphicTextGap(24);
-        password.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
-        logInGrid.add(password, 4, 2, 2 ,1);
+        VBox textFields = new VBox();
+        textFields.setAlignment(Pos.CENTER_RIGHT);
+        textFields.setSpacing(10);
+        TextField usernameTextField = new TextField("Indtast brugernavn");
+        TextField passwordTextField = new TextField("Indtast adgangskode");
+        textFields.getChildren().addAll(usernameTextField, passwordTextField);
 
-        Button logInVolunteer = new Button("Log ind som Frivillig");
-        logInGrid.add(logInVolunteer, 3, 3, 2, 1);
-        logInVolunteer.setAlignment(Pos.CENTER_LEFT);
-        logInVolunteer.setOnAction(e -> main.moveToVolunteerSchedule());
+        loginDetails.getChildren().addAll(texts, textFields);
 
-        Button logInLeader = new Button("Log ind som Ansvarlig");
-        logInGrid.add(logInLeader, 6, 3, 2, 1);
-        logInLeader.setAlignment(Pos.CENTER_RIGHT);
-        logInLeader.setOnAction(e -> main.moveToLeaderOptions());
+        vBox.getChildren().add(loginDetails);
 
-        return logInGrid;
+        HBox button = new HBox();
+        button.setAlignment(Pos.BOTTOM_CENTER);
+        button.setSpacing(30);
+        Button loginVolunteer = new Button("Frivillig");
+        loginVolunteer.setAlignment(Pos.BOTTOM_LEFT);
+        loginVolunteer.setOnAction(e -> main.moveToVolunteerSchedule());
+        Button loginLeader = new Button("Ansvarlig");
+        loginLeader.setAlignment(Pos.BOTTOM_RIGHT);
+        loginLeader.setOnAction(e -> main.moveToLeaderOptions());
+        button.getChildren().addAll(loginVolunteer, loginLeader);
+
+        logInScreenVBox.setAlignment(Pos.CENTER);
+        logInScreenVBox.setSpacing(50);
+        logInScreenVBox.getChildren().addAll(topSign, vBox, button);
+        return logInScreenVBox;
     }
 
     MenuBar getMenuBar() {
         MenuBar menuBar = new MenuBar();
 
         Menu menu = new Menu("Menu");
-        menuBar.getMenus().add(menu);
+        Menu regret = new Menu("Fortryd");
+        Menu quickNav = new Menu("Genvej");
+        menuBar.getMenus().addAll(quickNav, menu, regret);
+
+        MenuItem menuItemLogScreen = new MenuItem("Login Skærm");
+        menuItemLogScreen.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemVSchedule = new MenuItem("Vagtplan Frivillig");
+        menuItemVSchedule.setOnAction(e -> main.moveToVolunteerSchedule());
+        MenuItem menuItemLOptions = new MenuItem("Ansvarlig Muligheder");
+        menuItemLOptions.setOnAction(e -> main.moveToLeaderOptions());
+        MenuItem menuItemVList = new MenuItem("Liste over Frivillige");
+        menuItemVList.setOnAction(e -> main.moveToVolunteerList());
+        MenuItem menuItemVCreate = new MenuItem("Opret Frivillig");
+        menuItemVCreate.setOnAction(e -> main.moveToCreateVolunteer());
+        MenuItem menuItemSList = new MenuItem("Liste over Boder");
+        menuItemSList.setOnAction(e -> main.moveToStallsList());
+        MenuItem menuItemSCreate = new MenuItem("Opret Bod");
+        menuItemSCreate.setOnAction(e -> main.moveToCreateStall());
+        MenuItem menuItemSchedule = new MenuItem("Vagtplan Bod");
+        menuItemSchedule.setOnAction(e -> main.moveToStallSchedule());
+        MenuItem menuItemCWatch = new MenuItem("Opret Vagt");
+        menuItemCWatch.setOnAction(e -> main.moveToCreateStallWatch());
+        quickNav.getItems().addAll(menuItemLogScreen, menuItemVSchedule, menuItemLOptions, menuItemVList,
+                menuItemVCreate, menuItemSList, menuItemSCreate, menuItemSchedule, menuItemCWatch);
 
         MenuItem menuItemHelp = new MenuItem("Hjælp");
         menuItemHelp.setOnAction(e -> main.menuHelp());
         MenuItem menuItemBack = new MenuItem("Placeholder");
-        MenuItem menuItemLogUd = new MenuItem("Log ud");
-        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
         MenuItem menuItemClose = new MenuItem("Luk programmet");
         menuItemClose.setOnAction(e -> main.menuClose());
-        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemLogUd, menuItemClose);
+        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);
+
+        MenuItem menuItemReturn = new MenuItem("Gå tilbage");
+        menuItemReturn.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemLogUd = new MenuItem("Log ud");
+        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
+        regret.getItems().addAll(menuItemReturn, menuItemLogUd);
 
         return menuBar;
     }

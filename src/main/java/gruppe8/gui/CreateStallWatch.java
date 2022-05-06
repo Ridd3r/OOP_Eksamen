@@ -1,12 +1,11 @@
 package gruppe8.gui;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-
 import static gruppe8.gui.BackgroundPane.*;
 
 public class CreateStallWatch extends BorderPane {
@@ -18,10 +17,17 @@ public class CreateStallWatch extends BorderPane {
         setTop(VBoxTop());
         setCenter(createStallWatch());
         setBottom(HBoxBottom());
+        setBackground(Background());
     }
 
     VBox createStallWatch() {
         VBox createWatch = new VBox();
+
+        HBox hTop = new HBox();
+        Text schedule = new Text("Opret en vagt");
+        hTop.setAlignment(Pos.TOP_CENTER);
+        schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
+        hTop.getChildren().add(schedule);
 
         VBox top = new VBox();
 
@@ -39,9 +45,9 @@ public class CreateStallWatch extends BorderPane {
         VBox textFields = new VBox();
         textFields.setAlignment(Pos.CENTER_RIGHT);
         textFields.setSpacing(10);
-        TextField timeslotField = new TextField("Vælg tidsramme");
         TextField volunteerField = new TextField("Indtast for at søge");
-        textFields.getChildren().addAll(timeslotField, volunteerField);
+        TextField timeslotField = new TextField("Vælg tidsramme");
+        textFields.getChildren().addAll(volunteerField, timeslotField);
 
         volunteers.getChildren().addAll(texts, textFields);
 
@@ -55,8 +61,8 @@ public class CreateStallWatch extends BorderPane {
         button.getChildren().add(confirm);
 
         createWatch.setAlignment(Pos.CENTER);
-        createWatch.setSpacing(20);
-        createWatch.getChildren().addAll(top, button);
+        createWatch.setSpacing(30);
+        createWatch.getChildren().addAll(hTop, top, button);
 
         return createWatch;
     }
@@ -65,16 +71,43 @@ public class CreateStallWatch extends BorderPane {
         MenuBar menuBar = new MenuBar();
 
         Menu menu = new Menu("Menu");
-        menuBar.getMenus().add(menu);
+        Menu regret = new Menu("Fortryd");
+        Menu quickNav = new Menu("Genvej");
+        menuBar.getMenus().addAll(quickNav, menu, regret);
+
+        MenuItem menuItemLogScreen = new MenuItem("Login Skærm");
+        menuItemLogScreen.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemVSchedule = new MenuItem("Vagtplan Frivillig");
+        menuItemVSchedule.setOnAction(e -> main.moveToVolunteerSchedule());
+        MenuItem menuItemLOptions = new MenuItem("Ansvarlig Muligheder");
+        menuItemLOptions.setOnAction(e -> main.moveToLeaderOptions());
+        MenuItem menuItemVList = new MenuItem("Liste over Frivillige");
+        menuItemVList.setOnAction(e -> main.moveToVolunteerList());
+        MenuItem menuItemVCreate = new MenuItem("Opret Frivillig");
+        menuItemVCreate.setOnAction(e -> main.moveToCreateVolunteer());
+        MenuItem menuItemSList = new MenuItem("Liste over Boder");
+        menuItemSList.setOnAction(e -> main.moveToStallsList());
+        MenuItem menuItemSCreate = new MenuItem("Opret Bod");
+        menuItemSCreate.setOnAction(e -> main.moveToCreateStall());
+        MenuItem menuItemSchedule = new MenuItem("Vagtplan Bod");
+        menuItemSchedule.setOnAction(e -> main.moveToStallSchedule());
+        MenuItem menuItemCWatch = new MenuItem("Opret Vagt");
+        menuItemCWatch.setOnAction(e -> main.moveToCreateStallWatch());
+        quickNav.getItems().addAll(menuItemLogScreen, menuItemVSchedule, menuItemLOptions, menuItemVList,
+                menuItemVCreate, menuItemSList, menuItemSCreate, menuItemSchedule, menuItemCWatch);
 
         MenuItem menuItemHelp = new MenuItem("Hjælp");
         menuItemHelp.setOnAction(e -> main.menuHelp());
         MenuItem menuItemBack = new MenuItem("Placeholder");
-        MenuItem menuItemLogUd = new MenuItem("Log ud");
-        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
         MenuItem menuItemClose = new MenuItem("Luk programmet");
         menuItemClose.setOnAction(e -> main.menuClose());
-        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemLogUd, menuItemClose);
+        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);
+
+        MenuItem menuItemReturn = new MenuItem("Gå tilbage");
+        menuItemReturn.setOnAction(e -> main.moveToStallSchedule());
+        MenuItem menuItemLogUd = new MenuItem("Log ud");
+        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
+        regret.getItems().addAll(menuItemReturn, menuItemLogUd);
 
         return menuBar;
     }

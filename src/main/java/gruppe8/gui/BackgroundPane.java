@@ -13,7 +13,6 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 
-
 //Opsætning til Baggrundselementer på tværs af scener
 public class BackgroundPane extends BorderPane {
 
@@ -65,7 +64,7 @@ public class BackgroundPane extends BorderPane {
         return menuBar;
     }
 
-    public static VBox VBoxTop() {
+    /*public static VBox VBoxTop() {
         HBox hBoxTopImg = new HBox(); //HBox to center the Roskilde Logo Image
         hBoxTopImg.setAlignment(Pos.CENTER);
         hBoxTopImg.getChildren().add(RoskildeLogo());
@@ -78,7 +77,7 @@ public class BackgroundPane extends BorderPane {
         VBox vBoxTop = new VBox(); //Vertical Box to get both image and menuBar together in the top pane
         vBoxTop.getChildren().addAll(hBoxMenu, hBoxTopImg);
         return vBoxTop;
-    }
+    }*/
 
     public static HBox HBoxBottom() {
         HBox hBoxLeft = new HBox(); //HBox for Bottom left Logo
@@ -95,18 +94,9 @@ public class BackgroundPane extends BorderPane {
         return hBox;
     }
 
-    public BorderPane addBorderPane() { //Creating the borderpane used in the scene
-        BorderPane borderPane = new BorderPane();
-
-        borderPane.setTop(VBoxTop()); //Adding in the top picture and Menu
-        borderPane.setLeft(null); //Null, gives a small border to edge of screen for now
-        borderPane.setCenter(null); //Adding in the gridpane in the middle
-        borderPane.setRight(null); //Null, gives a small border to edge of screen for now
-        borderPane.setBottom(HBoxBottom()); //Adding in the logos in the bottom
-
-        borderPane.setBackground(new Background(new BackgroundFill( //Setting background, Source: https://edencoding.com/scene-background/
-                new LinearGradient(0, 0, 1, 1, true,
-                        CycleMethod.NO_CYCLE,
+    public static Background Background() {
+        //Setting background, Source: https://edencoding.com/scene-background/
+        return new Background(new BackgroundFill(new LinearGradient(0, 0, 1, 1, true,CycleMethod.NO_CYCLE,
                         new Stop(0, Color.web("#000000")),
                         new Stop(0.083, Color.web("#2f141a")),
                         new Stop(0.166, Color.web("#5a1e25")),
@@ -119,9 +109,6 @@ public class BackgroundPane extends BorderPane {
                         new Stop(0.75, Color.web("#eb8502")),
                         new Stop(0.833, Color.web("ed9102")),
                         new Stop(1, Color.web("#ee9d05"))
-                ), CornerRadii.EMPTY, Insets.EMPTY
-        )));
-        return borderPane;
+                ), CornerRadii.EMPTY, Insets.EMPTY));
     }
-
 }

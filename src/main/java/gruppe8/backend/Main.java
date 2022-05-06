@@ -12,10 +12,7 @@ public class Main {
 
         Bod.setFrivillig(writerF);
 
-
-        System.out.println(writerB.visAlleBoder());
-
-
+        System.out.println(writerF.visAlle());
 
         writerB.closeFile();
         writerF.closeFile();

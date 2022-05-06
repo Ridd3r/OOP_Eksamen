@@ -18,7 +18,7 @@ public class GUI extends Application {
     CreateStallWatch createStallWatch;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Frivillig på Roskilde");
         stage = primaryStage;
 

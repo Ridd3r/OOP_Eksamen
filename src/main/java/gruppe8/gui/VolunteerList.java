@@ -1,7 +1,9 @@
 package gruppe8.gui;
 
+import gruppe8.backend.Frivillig;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -9,12 +11,22 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static gruppe8.gui.BackgroundPane.*;
+import static gruppe8.backend.DataHandlerFrivillig.*;
+import static java.util.Arrays.stream;
 
 //List of volunteers
 public class VolunteerList extends BorderPane {
 
     GUI main;
+    static String filePath = "src/main/java/gruppe8/Frivillige.txt";
 
     public VolunteerList(GUI main) {
         this.main = main;
@@ -39,13 +51,27 @@ public class VolunteerList extends BorderPane {
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
 
-        ListView volunteerListView = new ListView();
+        TableView<Frivillig> volunteerTableView = new TableView<>(); //Ændring fra normal til "Generic" udtryk? Warning gav anledning til ny opsætning
 
-        volunteerListView.getItems().add("Test 1");
-        volunteerListView.getItems().add("Test 2");
-        volunteerListView.getItems().add("Test 3");
+        TableColumn<Frivillig, String> firstNameColumn = new TableColumn<>("Fornavn");
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        TableColumn<Frivillig, String> lastNameColumn = new TableColumn<>("Efternavn");
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        TableColumn<Frivillig, String> ageColumn = new TableColumn<>("Alder");
+        ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        TableColumn<Frivillig, String> phoneNumberColumn = new TableColumn<>("Telefon");
+        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        TableColumn<Frivillig, String> emailColumn = new TableColumn<>("Email");
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        hBox.getChildren().add(volunteerListView);
+        volunteerTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        volunteerTableView.getColumns().addAll(firstNameColumn, lastNameColumn, ageColumn, phoneNumberColumn, emailColumn);
+
+        volunteerTableView.getItems().add(new Frivillig("Constantine", "Undergrove", 42, 42958761, "jubi@dk.dk"));
+        volunteerTableView.getItems().add(new Frivillig("Genevieve", "Vandenberg", 35, 8745137, "123@ok.dk"));
+
+        hBox.getChildren().add(volunteerTableView);
 
         vBox.getChildren().add(hBox);
 
@@ -61,6 +87,37 @@ public class VolunteerList extends BorderPane {
         volunteerList.getChildren().addAll(topSign,vBox,button);
         return volunteerList;
     }
+
+     /*public class Person {
+        private String firstName;
+        private String lastName;
+        private Integer age;
+        private Integer phoneNumber;
+        private String email;
+
+        public Person(String firstName, String lastName, Integer age, Integer phoneNumber, String email) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
+
+            public void setFirstName(String name) {this.firstName = name; }
+            public String getFirstName() {return this.firstName;}
+
+            public void setLastName(String name){this.firstName = name;}
+            public String getLastName() {return this.lastName;}
+
+            public void setAge(int age) {this.age = age;}
+            public int getAge(){return this.age;}
+
+            public void setPhoneNumber(int number) {this.phoneNumber = number;}
+            public int getPhoneNumber() {return this.phoneNumber;}
+
+            public void setEmail(String email) {this.email = email;}
+            public String getEmail() { return this.email;}
+    }*/
 
     MenuBar getMenuBar() {
         MenuBar menuBar = new MenuBar();

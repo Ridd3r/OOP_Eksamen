@@ -1,6 +1,5 @@
 package gruppe8.gui;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -9,9 +8,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-
+import javafx.scene.text.Text;
 import static gruppe8.gui.BackgroundPane.*;
-import static gruppe8.backend.Frivillig.*;
 
 //Opret Frivillig
 public class CreateVolunteer extends BorderPane {
@@ -23,53 +21,109 @@ public class CreateVolunteer extends BorderPane {
         setTop(VBoxTop());
         setCenter(createVolunteer());
         setBottom(HBoxBottom());
+        setBackground(Background());
     }
 
     VBox createVolunteer() {
-        VBox vBox = new VBox(10);
-        Label firstName = new Label("Fornavn: ", new TextField("Indtast dit fornavn"));
-        firstName.setContentDisplay(ContentDisplay.RIGHT);
-        firstName.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
-        Label lastName = new Label("Efternavn: ", new TextField("Indtast dit efternavn"));
-        lastName.setContentDisplay(ContentDisplay.RIGHT);
-        lastName.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
-        Label age = new Label("Alder: ", new TextField("Indtast din alder"));
-        age.setContentDisplay(ContentDisplay.RIGHT);
-        age.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
-        Label telephone = new Label("Telefon: ", new TextField("Indtast dit telefonnummer"));
-        telephone.setContentDisplay(ContentDisplay.RIGHT);
-        telephone.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
-        Label email = new Label("Email: ", new TextField("Indtast din email"));
-        email.setContentDisplay(ContentDisplay.RIGHT);
-        email.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        VBox createVolunteerVBox = new VBox();
 
-        HBox buttons = new HBox(20);
+        HBox hTop = new HBox();
+        Text schedule = new Text("Opret en Frivillig");
+        hTop.setAlignment(Pos.TOP_CENTER);
+        schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
+        hTop.getChildren().add(schedule);
+
+        VBox top = new VBox();
+
+        HBox allFields = new HBox();
+        allFields.setAlignment(Pos.TOP_CENTER);
+        HBox.setHgrow(allFields, Priority.ALWAYS);
+        allFields.setSpacing(20);
+
+        VBox texts = new VBox();
+        texts.setAlignment(Pos.CENTER_LEFT);
+        texts.setSpacing(18);
+        Text firstNameText = new Text("Fornavn: ");
+        firstNameText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        Text lastNameText = new Text("Efternavn: ");
+        lastNameText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        Text ageText = new Text("Alder: ");
+        ageText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        Text phoneNumberText = new Text("Telefonnummer: ");
+        phoneNumberText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        Text emailText = new Text("Email: ");
+        emailText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 14));
+        texts.getChildren().addAll(firstNameText, lastNameText, ageText, phoneNumberText, emailText);
+
+        VBox textFields = new VBox();
+        textFields.setAlignment(Pos.CENTER_LEFT);
+        textFields.setSpacing(10);
+        TextField firstNameTextField = new TextField("Indtast dit fornavn");
+        TextField lastNameTextField = new TextField("Indtast dit efternavn");
+        TextField ageTextField = new TextField("Indtast din alder");
+        TextField phoneNumberTextField = new TextField("Indtast dit telefonnummer");
+        TextField emailTextField = new TextField("Indtast din email");
+        textFields.getChildren().addAll(firstNameTextField, lastNameTextField, ageTextField, phoneNumberTextField, emailTextField);
+
+        allFields.getChildren().addAll(texts, textFields);
+
+        top.getChildren().add(allFields);
+
+        VBox buttons = new VBox();
+        buttons.setAlignment(Pos.BOTTOM_CENTER);
         Button opret = new Button("Opret Frivillig");
         opret.setOnAction(e -> main.moveToVolunteerList());
-        HBox.setHgrow(opret, Priority.ALWAYS);
-        buttons.setAlignment(Pos.CENTER);
+        opret.setAlignment(Pos.BOTTOM_CENTER);
         buttons.getChildren().add(opret);
 
-        vBox.setPadding(new Insets(25, 25, 25, 25));
-        vBox.setAlignment(Pos.CENTER);
-        vBox.getChildren().addAll(firstName, lastName, age, telephone, email, buttons);
-        return vBox;
+        createVolunteerVBox.setAlignment(Pos.CENTER);
+        createVolunteerVBox.setSpacing(30);
+        createVolunteerVBox.getChildren().addAll(hTop, top, buttons);
+
+        return createVolunteerVBox;
     }
 
     MenuBar getMenuBar() {
         MenuBar menuBar = new MenuBar();
 
         Menu menu = new Menu("Menu");
-        menuBar.getMenus().add(menu);
+        Menu regret = new Menu("Fortryd");
+        Menu quickNav = new Menu("Genvej");
+        menuBar.getMenus().addAll(quickNav, menu, regret);
+
+        MenuItem menuItemLogScreen = new MenuItem("Login Skærm");
+        menuItemLogScreen.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemVSchedule = new MenuItem("Vagtplan Frivillig");
+        menuItemVSchedule.setOnAction(e -> main.moveToVolunteerSchedule());
+        MenuItem menuItemLOptions = new MenuItem("Ansvarlig Muligheder");
+        menuItemLOptions.setOnAction(e -> main.moveToLeaderOptions());
+        MenuItem menuItemVList = new MenuItem("Liste over Frivillige");
+        menuItemVList.setOnAction(e -> main.moveToVolunteerList());
+        MenuItem menuItemVCreate = new MenuItem("Opret Frivillig");
+        menuItemVCreate.setOnAction(e -> main.moveToCreateVolunteer());
+        MenuItem menuItemSList = new MenuItem("Liste over Boder");
+        menuItemSList.setOnAction(e -> main.moveToStallsList());
+        MenuItem menuItemSCreate = new MenuItem("Opret Bod");
+        menuItemSCreate.setOnAction(e -> main.moveToCreateStall());
+        MenuItem menuItemSchedule = new MenuItem("Vagtplan Bod");
+        menuItemSchedule.setOnAction(e -> main.moveToStallSchedule());
+        MenuItem menuItemCWatch = new MenuItem("Opret Vagt");
+        menuItemCWatch.setOnAction(e -> main.moveToCreateStallWatch());
+        quickNav.getItems().addAll(menuItemLogScreen, menuItemVSchedule, menuItemLOptions, menuItemVList,
+                menuItemVCreate, menuItemSList, menuItemSCreate, menuItemSchedule, menuItemCWatch);
 
         MenuItem menuItemHelp = new MenuItem("Hjælp");
         menuItemHelp.setOnAction(e -> main.menuHelp());
         MenuItem menuItemBack = new MenuItem("Placeholder");
-        MenuItem menuItemLogUd = new MenuItem("Log ud");
-        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
         MenuItem menuItemClose = new MenuItem("Luk programmet");
         menuItemClose.setOnAction(e -> main.menuClose());
-        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemLogUd, menuItemClose);
+        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);
+
+        MenuItem menuItemReturn = new MenuItem("Gå tilbage");
+        menuItemReturn.setOnAction(e -> main.moveToVolunteerList());
+        MenuItem menuItemLogUd = new MenuItem("Log ud");
+        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
+        regret.getItems().addAll(menuItemReturn, menuItemLogUd);
 
         return menuBar;
     }

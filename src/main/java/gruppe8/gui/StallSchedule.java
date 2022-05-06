@@ -6,7 +6,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-
 import static gruppe8.gui.BackgroundPane.*;
 
 public class StallSchedule extends BorderPane {
@@ -18,16 +17,18 @@ public class StallSchedule extends BorderPane {
         setTop(VBoxTop());
         setCenter(stallSchedule());
         setBottom(HBoxBottom());
+        setBackground(Background());
     }
 
     VBox stallSchedule() {
         VBox stallScheduleVBox = new VBox();
         stallScheduleVBox.setAlignment(Pos.CENTER);
+        stallScheduleVBox.setSpacing(30);
         HBox stallScheduleHBox = new HBox();
         stallScheduleHBox.setAlignment(Pos.CENTER);
 
         HBox top = new HBox();
-        Text schedule = new Text("Vagtplan ");
+        Text schedule = new Text("Vagtplan");
         top.setAlignment(Pos.TOP_CENTER);
         schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
         top.getChildren().add(schedule);
@@ -280,12 +281,8 @@ public class StallSchedule extends BorderPane {
         bot.setAlignment(Pos.BOTTOM_CENTER);
         Button stallScheduleOpretVagt = new Button("Opret en Vagt");
         stallScheduleOpretVagt.setAlignment(Pos.BOTTOM_LEFT);
-        HBox.setHgrow(stallScheduleOpretVagt, Priority.ALWAYS);
         stallScheduleOpretVagt.setOnAction(e -> main.moveToCreateStallWatch());
-        Button tilbage = new Button("Tilbage");
-        tilbage.setAlignment(Pos.BOTTOM_RIGHT);
-        tilbage.setOnAction(e -> main.moveToStallsList());
-        bot.getChildren().addAll(stallScheduleOpretVagt, tilbage);
+        bot.getChildren().add(stallScheduleOpretVagt);
 
         VBox.setVgrow(stallScheduleVBox, Priority.ALWAYS);
         stallScheduleVBox.getChildren().addAll(top, first, bot);
@@ -296,16 +293,43 @@ public class StallSchedule extends BorderPane {
         MenuBar menuBar = new MenuBar();
 
         Menu menu = new Menu("Menu");
-        menuBar.getMenus().add(menu);
+        Menu regret = new Menu("Fortryd");
+        Menu quickNav = new Menu("Genvej");
+        menuBar.getMenus().addAll(quickNav, menu, regret);
+
+        MenuItem menuItemLogScreen = new MenuItem("Login Skærm");
+        menuItemLogScreen.setOnAction(e -> main.moveToLogInScreen());
+        MenuItem menuItemVSchedule = new MenuItem("Vagtplan Frivillig");
+        menuItemVSchedule.setOnAction(e -> main.moveToVolunteerSchedule());
+        MenuItem menuItemLOptions = new MenuItem("Ansvarlig Muligheder");
+        menuItemLOptions.setOnAction(e -> main.moveToLeaderOptions());
+        MenuItem menuItemVList = new MenuItem("Liste over Frivillige");
+        menuItemVList.setOnAction(e -> main.moveToVolunteerList());
+        MenuItem menuItemVCreate = new MenuItem("Opret Frivillig");
+        menuItemVCreate.setOnAction(e -> main.moveToCreateVolunteer());
+        MenuItem menuItemSList = new MenuItem("Liste over Boder");
+        menuItemSList.setOnAction(e -> main.moveToStallsList());
+        MenuItem menuItemSCreate = new MenuItem("Opret Bod");
+        menuItemSCreate.setOnAction(e -> main.moveToCreateStall());
+        MenuItem menuItemSchedule = new MenuItem("Vagtplan Bod");
+        menuItemSchedule.setOnAction(e -> main.moveToStallSchedule());
+        MenuItem menuItemCWatch = new MenuItem("Opret Vagt");
+        menuItemCWatch.setOnAction(e -> main.moveToCreateStallWatch());
+        quickNav.getItems().addAll(menuItemLogScreen, menuItemVSchedule, menuItemLOptions, menuItemVList,
+                menuItemVCreate, menuItemSList, menuItemSCreate, menuItemSchedule, menuItemCWatch);
 
         MenuItem menuItemHelp = new MenuItem("Hjælp");
         menuItemHelp.setOnAction(e -> main.menuHelp());
         MenuItem menuItemBack = new MenuItem("Placeholder");
-        MenuItem menuItemLogUd = new MenuItem("Log ud");
-        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
         MenuItem menuItemClose = new MenuItem("Luk programmet");
         menuItemClose.setOnAction(e -> main.menuClose());
-        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemLogUd, menuItemClose);
+        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);
+
+        MenuItem menuItemReturn = new MenuItem("Gå tilbage");
+        menuItemReturn.setOnAction(e -> main.moveToStallsList());
+        MenuItem menuItemLogUd = new MenuItem("Log ud");
+        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());
+        regret.getItems().addAll(menuItemReturn, menuItemLogUd);
 
         return menuBar;
     }

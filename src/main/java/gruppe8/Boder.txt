@@ -1,2 +1,5 @@
 Andersens Pølser,0,Vi sælger det bedste pølser
+Jensens Øl,18,Vi sælger øl
+Josefines Madbod,0,Sulten hos Josefine
+McDonalds,15,Den Gyldne Måge
 Test,666,Denne bod er en test >:D

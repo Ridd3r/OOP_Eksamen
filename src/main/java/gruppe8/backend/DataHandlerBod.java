@@ -7,7 +7,7 @@ public class DataHandlerBod {
     BufferedWriter out;
     BufferedReader in;
     static String filePath = "src/main/java/gruppe8/Boder.txt";
-    private final ArrayList<Bod> dataArray = new ArrayList<>();
+    public final ArrayList<Bod> dataArray = new ArrayList<>();
 
     //opens default file "Boder" and stores the data in dataArray
     public void openFile() {

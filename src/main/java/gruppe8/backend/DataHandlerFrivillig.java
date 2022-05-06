@@ -11,7 +11,7 @@ public class DataHandlerFrivillig {
     BufferedWriter out;
     BufferedReader in;
     static String filePath = "src/main/java/gruppe8/Frivillige.txt";
-    private final ArrayList<Frivillig> dataArray = new ArrayList<>();
+    public final ArrayList<Frivillig> dataArray = new ArrayList<>();
 
     //opens default file "Frivillige" and stores the data in dataArray
     public void openFile() {
@@ -145,7 +145,6 @@ public class DataHandlerFrivillig {
         Frivillig person = new Frivillig(firstName, lastName, age, number, mail);
         dataArray.set(index, person);
     }
-
 
     /*Returns ArrayList containing all frivillige who's first or lastName includes the searchword or letter.
     It is possible to search with spaces ex; "Lars larsen" as the name, og "Signe L".

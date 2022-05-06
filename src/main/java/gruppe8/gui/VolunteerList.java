@@ -1,7 +1,12 @@
 package gruppe8.gui;
 
+import gruppe8.backend.DataHandlerFrivillig;
+import gruppe8.backend.Frivillig;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,6 +20,7 @@ import static gruppe8.gui.BackgroundPane.*;
 public class VolunteerList extends BorderPane {
 
     GUI main;
+    static String filePath = "src/main/java/gruppe8/Frivillige.txt";
 
     public VolunteerList(GUI main) {
         this.main = main;
@@ -39,13 +45,33 @@ public class VolunteerList extends BorderPane {
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
 
-        ListView volunteerListView = new ListView();
+        DataHandlerFrivillig frivilligHandler = new DataHandlerFrivillig();
+        frivilligHandler.openFile();
 
-        volunteerListView.getItems().add("Test 1");
-        volunteerListView.getItems().add("Test 2");
-        volunteerListView.getItems().add("Test 3");
+        TableView<Frivillig> volunteerTableView = new TableView<>();
 
-        hBox.getChildren().add(volunteerListView);
+        ObservableList<Frivillig> persons = FXCollections.observableArrayList(frivilligHandler.dataArray);
+
+        TableColumn<Frivillig, String> firstNameColumn = new TableColumn<>("Fornavn");
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        TableColumn<Frivillig, String> lastNameColumn = new TableColumn<>("Efternavn");
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        TableColumn<Frivillig, String> ageColumn = new TableColumn<>("Alder");
+        ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        TableColumn<Frivillig, String> phoneNumberColumn = new TableColumn<>("Telefon");
+        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        TableColumn<Frivillig, String> emailColumn = new TableColumn<>("Email");
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        //volunteerTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        volunteerTableView.setItems(persons);
+
+        volunteerTableView.getColumns().addAll(firstNameColumn, lastNameColumn, ageColumn, phoneNumberColumn, emailColumn);
+
+        hBox.getChildren().add(volunteerTableView);
+
+        frivilligHandler.closeFile();
 
         vBox.getChildren().add(hBox);
 

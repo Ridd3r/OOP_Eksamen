@@ -1,7 +1,12 @@
 package gruppe8.gui;
 
+import gruppe8.backend.Bod;
+import gruppe8.backend.DataHandlerBod;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -38,13 +43,30 @@ public class StallsList extends BorderPane {
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
 
-        ListView stallsListView = new ListView();
+        DataHandlerBod stallsHandler = new DataHandlerBod();
+        stallsHandler.openFile();
 
-        stallsListView.getItems().add("Stall 1");
-        stallsListView.getItems().add("Stall 2");
-        stallsListView.getItems().add("Stall 3");
+        TableView<Bod> stallsTableView = new TableView<>();
+        stallsTableView.setPrefWidth(400);
 
-        hBox.getChildren().add(stallsListView);
+        ObservableList<Bod> items = FXCollections.observableArrayList(stallsHandler.dataArray);
+
+        TableColumn<Bod, String> stallNameColumn = new TableColumn<>("Bodens Navn");
+        stallNameColumn.setCellValueFactory(new PropertyValueFactory<>("navn"));
+        TableColumn<Bod, String> stallAgeRestrictionColumn = new TableColumn<>("Aldersgrænse");
+        stallAgeRestrictionColumn.setCellValueFactory(new PropertyValueFactory<>("alderskrav"));
+        TableColumn<Bod, String> stallDescriptionColumn = new TableColumn<>("Beskrivelse");
+        stallDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("beskrivelse"));
+
+        stallsTableView.setItems(items);
+
+        stallsTableView.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+
+        stallsTableView.getColumns().addAll(stallNameColumn, stallAgeRestrictionColumn, stallDescriptionColumn);
+
+        hBox.getChildren().add(stallsTableView);
+
+        stallsHandler.closeFile();
 
         vBox.getChildren().add(hBox);
 

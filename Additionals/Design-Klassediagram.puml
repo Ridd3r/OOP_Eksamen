@@ -51,10 +51,10 @@ visAlle()
 
 /' Herunder kommer pile '/
 
-DataHandlerFrivillig "1"-->"         *" Frivillig
-Bod "1" o-- "     1" DataHandlerFrivillig
-Bod "1" o-- "*" Vagt
-DataHandlerBod "1" --> "*" Bod
+DataHandlerFrivillig "1"-->"*" Frivillig
+Bod "1" o-- "1" DataHandlerFrivillig
+Bod "1" o-- " * " Vagt
+DataHandlerBod  " 1"-left->" * "  Bod
 Vagt " *" ..> "1" Frivillig
 
 

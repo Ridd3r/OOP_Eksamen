@@ -1,0 +1,277 @@
+Index: src/main/java/gruppe8/gui/VolunteerList.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gruppe8.gui;\r\n\r\nimport gruppe8.backend.Frivillig;\r\nimport javafx.geometry.Pos;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.layout.BorderPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.scene.layout.VBox;\r\nimport javafx.scene.text.Font;\r\nimport javafx.scene.text.FontWeight;\r\nimport javafx.scene.text.Text;\r\n\r\nimport java.io.File;\r\nimport java.io.IOException;\r\nimport java.nio.file.Files;\r\nimport java.util.Collection;\r\nimport java.util.List;\r\nimport java.util.stream.Collectors;\r\n\r\nimport static gruppe8.gui.BackgroundPane.*;\r\nimport static gruppe8.backend.DataHandlerFrivillig.*;\r\nimport static java.util.Arrays.stream;\r\n\r\n//List of volunteers\r\npublic class VolunteerList extends BorderPane {\r\n\r\n    GUI main;\r\n    static String filePath = \"src/main/java/gruppe8/Frivillige.txt\";\r\n\r\n    public VolunteerList(GUI main) {\r\n        this.main = main;\r\n        setTop(VBoxTop());\r\n        setCenter(volunteerListView());\r\n        setBottom(HBoxBottom());\r\n        setBackground(Background());\r\n    }\r\n\r\n    VBox volunteerListView() {\r\n        VBox volunteerList = new VBox();\r\n\r\n        HBox topSign = new HBox();\r\n        Text volunteersList = new Text(\"Liste over Frivillige\");\r\n        topSign.setAlignment(Pos.TOP_CENTER);\r\n        volunteersList.setFont(Font.font(\"Rockwell\", FontWeight.BOLD, 30));\r\n        topSign.getChildren().add(volunteersList);\r\n\r\n        VBox vBox = new VBox();\r\n        vBox.setAlignment(Pos.CENTER);\r\n\r\n        HBox hBox = new HBox();\r\n        hBox.setAlignment(Pos.CENTER);\r\n\r\n        TableView<Frivillig> volunteerTableView = new TableView<>(); //Ændring fra normal til \"Generic\" udtryk? Warning gav anledning til ny opsætning\r\n\r\n        TableColumn<Frivillig, String> firstNameColumn = new TableColumn<>(\"Fornavn\");\r\n        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>(\"firstName\"));\r\n        TableColumn<Frivillig, String> lastNameColumn = new TableColumn<>(\"Efternavn\");\r\n        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>(\"lastName\"));\r\n        TableColumn<Frivillig, String> ageColumn = new TableColumn<>(\"Alder\");\r\n        ageColumn.setCellValueFactory(new PropertyValueFactory<>(\"age\"));\r\n        TableColumn<Frivillig, String> phoneNumberColumn = new TableColumn<>(\"Telefon\");\r\n        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>(\"phoneNumber\"));\r\n        TableColumn<Frivillig, String> emailColumn = new TableColumn<>(\"Email\");\r\n        emailColumn.setCellValueFactory(new PropertyValueFactory<>(\"email\"));\r\n\r\n        volunteerTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);\r\n\r\n        volunteerTableView.getColumns().addAll(firstNameColumn, lastNameColumn, ageColumn, phoneNumberColumn, emailColumn);\r\n\r\n        volunteerTableView.getItems().add(new Frivillig(\"Constantine\", \"Undergrove\", 42, 42958761, \"jubi@dk.dk\"));\r\n        volunteerTableView.getItems().add(new Frivillig(\"Genevieve\", \"Vandenberg\", 35, 8745137, \"123@ok.dk\"));\r\n\r\n        hBox.getChildren().add(volunteerTableView);\r\n\r\n        vBox.getChildren().add(hBox);\r\n\r\n        VBox button = new VBox();\r\n        button.setAlignment(Pos.BOTTOM_CENTER);\r\n        Button createVolunteer = new Button(\"Opret en Frivillig\");\r\n        createVolunteer.setAlignment(Pos.BOTTOM_CENTER);\r\n        createVolunteer.setOnAction(e -> main.moveToCreateVolunteer());\r\n        button.getChildren().add(createVolunteer);\r\n\r\n        volunteerList.setAlignment(Pos.CENTER);\r\n        volunteerList.setSpacing(10);\r\n        volunteerList.getChildren().addAll(topSign,vBox,button);\r\n        return volunteerList;\r\n    }\r\n\r\n     /*public class Person {\r\n        private String firstName;\r\n        private String lastName;\r\n        private Integer age;\r\n        private Integer phoneNumber;\r\n        private String email;\r\n\r\n        public Person(String firstName, String lastName, Integer age, Integer phoneNumber, String email) {\r\n            this.firstName = firstName;\r\n            this.lastName = lastName;\r\n            this.age = age;\r\n            this.phoneNumber = phoneNumber;\r\n            this.email = email;\r\n        }\r\n\r\n            public void setFirstName(String name) {this.firstName = name; }\r\n            public String getFirstName() {return this.firstName;}\r\n\r\n            public void setLastName(String name){this.firstName = name;}\r\n            public String getLastName() {return this.lastName;}\r\n\r\n            public void setAge(int age) {this.age = age;}\r\n            public int getAge(){return this.age;}\r\n\r\n            public void setPhoneNumber(int number) {this.phoneNumber = number;}\r\n            public int getPhoneNumber() {return this.phoneNumber;}\r\n\r\n            public void setEmail(String email) {this.email = email;}\r\n            public String getEmail() { return this.email;}\r\n    }*/\r\n\r\n    MenuBar getMenuBar() {\r\n        MenuBar menuBar = new MenuBar();\r\n\r\n        Menu menu = new Menu(\"Menu\");\r\n        Menu regret = new Menu(\"Fortryd\");\r\n        Menu quickNav = new Menu(\"Genvej\");\r\n        menuBar.getMenus().addAll(quickNav, menu, regret);\r\n\r\n        MenuItem menuItemLogScreen = new MenuItem(\"Login Skærm\");\r\n        menuItemLogScreen.setOnAction(e -> main.moveToLogInScreen());\r\n        MenuItem menuItemVSchedule = new MenuItem(\"Vagtplan Frivillig\");\r\n        menuItemVSchedule.setOnAction(e -> main.moveToVolunteerSchedule());\r\n        MenuItem menuItemLOptions = new MenuItem(\"Ansvarlig Muligheder\");\r\n        menuItemLOptions.setOnAction(e -> main.moveToLeaderOptions());\r\n        MenuItem menuItemVList = new MenuItem(\"Liste over Frivillige\");\r\n        menuItemVList.setOnAction(e -> main.moveToVolunteerList());\r\n        MenuItem menuItemVCreate = new MenuItem(\"Opret Frivillig\");\r\n        menuItemVCreate.setOnAction(e -> main.moveToCreateVolunteer());\r\n        MenuItem menuItemSList = new MenuItem(\"Liste over Boder\");\r\n        menuItemSList.setOnAction(e -> main.moveToStallsList());\r\n        MenuItem menuItemSCreate = new MenuItem(\"Opret Bod\");\r\n        menuItemSCreate.setOnAction(e -> main.moveToCreateStall());\r\n        MenuItem menuItemSchedule = new MenuItem(\"Vagtplan Bod\");\r\n        menuItemSchedule.setOnAction(e -> main.moveToStallSchedule());\r\n        MenuItem menuItemCWatch = new MenuItem(\"Opret Vagt\");\r\n        menuItemCWatch.setOnAction(e -> main.moveToCreateStallWatch());\r\n        quickNav.getItems().addAll(menuItemLogScreen, menuItemVSchedule, menuItemLOptions, menuItemVList,\r\n                menuItemVCreate, menuItemSList, menuItemSCreate, menuItemSchedule, menuItemCWatch);\r\n\r\n        MenuItem menuItemHelp = new MenuItem(\"Hjælp\");\r\n        menuItemHelp.setOnAction(e -> main.menuHelp());\r\n        MenuItem menuItemBack = new MenuItem(\"Placeholder\");\r\n        MenuItem menuItemClose = new MenuItem(\"Luk programmet\");\r\n        menuItemClose.setOnAction(e -> main.menuClose());\r\n        menu.getItems().addAll(menuItemHelp, menuItemBack, menuItemClose);\r\n\r\n        MenuItem menuItemReturn = new MenuItem(\"Gå tilbage\");\r\n        menuItemReturn.setOnAction(e -> main.moveToLeaderOptions());\r\n        MenuItem menuItemLogUd = new MenuItem(\"Log ud\");\r\n        menuItemLogUd.setOnAction(e -> main.moveToLogInScreen());\r\n        regret.getItems().addAll(menuItemReturn, menuItemLogUd);\r\n\r\n        return menuBar;\r\n    }\r\n\r\n    VBox VBoxTop() {\r\n        HBox hBoxTopImg = new HBox(); //HBox to center the Roskilde Logo Image\r\n        hBoxTopImg.setAlignment(Pos.CENTER);\r\n        hBoxTopImg.getChildren().add(RoskildeLogo());\r\n\r\n        HBox hBoxMenu = new HBox(); //Horizontal box to try and align the menu to the right instead of left\r\n        //Something does not add up - it appears as a menuButton instead of a menuBar which is what is called\r\n        hBoxMenu.setAlignment(Pos.TOP_RIGHT);\r\n        hBoxMenu.getChildren().add(getMenuBar());\r\n\r\n        VBox vBoxTop = new VBox(); //Vertical Box to get both image and menuBar together in the top pane\r\n        vBoxTop.getChildren().addAll(hBoxMenu, hBoxTopImg);\r\n        return vBoxTop;\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/gruppe8/gui/VolunteerList.java b/src/main/java/gruppe8/gui/VolunteerList.java
+--- a/src/main/java/gruppe8/gui/VolunteerList.java	(revision 7c9aae0dc888528f4e7df1755c2e8f23894dbb83)
++++ b/src/main/java/gruppe8/gui/VolunteerList.java	(date 1651872092427)
+@@ -26,7 +26,6 @@
+ public class VolunteerList extends BorderPane {
+ 
+     GUI main;
+-    static String filePath = "src/main/java/gruppe8/Frivillige.txt";
+ 
+     public VolunteerList(GUI main) {
+         this.main = main;
+Index: src/main/java/gruppe8/backend/DataHandlerBod.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gruppe8.backend;\r\n\r\nimport java.io.*;\r\nimport java.util.ArrayList;\r\n\r\npublic class DataHandlerBod {\r\n    BufferedWriter out;\r\n    BufferedReader in;\r\n    static String filePath = \"src/main/java/gruppe8/Boder.txt\";\r\n    private final ArrayList<Bod> dataArrayBod = new ArrayList<>();\r\n\r\n\r\n    //opens default file \"Boder\" and stores the data in dataArray\r\n    public void openFile() {\r\n        try {\r\n            in = new BufferedReader(new FileReader(filePath));\r\n            makeDataArray(); //dataArray SKAL laves før new FileWriter bliver opretter, fordi fileWriter overskriver filen med en ny og tom fil\r\n            out = new BufferedWriter(new FileWriter(filePath));\r\n\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    // Will write dataArray to text file before closing. Adding Test Admin to the end of the list.\r\n\r\n    public void closeFile() {\r\n        try {\r\n            for (int i = 0; i < dataArrayBod.size(); i++) {\r\n                String s = \"\";\r\n                s = s + dataArrayBod.get(i).getNavn();\r\n                for (int n = 0; n < dataArrayBod.get(i).vagtArray.size(); n++) {\r\n                    s = s + \",\";\r\n                    for (int c = 0; c < dataArrayBod.get(i).vagtArray.get(n).personIdList.size(); c++) {\r\n                        if (c > 0) s += \" \";\r\n                        s = s + dataArrayBod.get(i).vagtArray.get(n).personIdList.get(c);\r\n                    }\r\n                }\r\n                s = s + \"\\n\";\r\n                out.write(s);\r\n            }\r\n\r\n            out.flush();\r\n            out.close();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n    }\r\n\r\n    /*Reads the text file into the arrayList of boder\r\n    Får en mærkelig fejl hvis den sidste frivillige i arrayListen har en alder som slutter på 0. fx 20 eller 30\r\n     */\r\n    private void makeDataArray() {\r\n        try {\r\n            String line;\r\n            line = in.readLine();\r\n            while (line != null) {\r\n                String[] lines = line.split(\",\");\r\n                Bod bod = new Bod(lines[0]);\r\n                for (int i = 1; i < lines.length; i++) { //i starter på 1 for at springe navnet over så står på plads 0.\r\n                    String[] dataFrivillig = lines[i].split(\" \");\r\n                    for (int n = 0; n < dataFrivillig.length; n++) {\r\n                        if (!dataFrivillig[n].equals(\"\")) {\r\n                            int id = Integer.parseInt(dataFrivillig[n]);\r\n                            bod.addFrivilligToVagt(i-1, id); //Fordi i startede på 1 og ikke 0, er i højere end den skal være til dette formål\r\n                        }\r\n                    }\r\n                }\r\n                dataArrayBod.add(bod);\r\n                line = in.readLine();\r\n            }\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        dataArrayBod.sort((f1, f2) -> {\r\n            return f1.getNavn().compareToIgnoreCase(f2.getNavn()); //Den her sammenligning skal gerne give en int som er >=< end 0.\r\n        });\r\n\r\n    }\r\n\r\n    //Add bod to dataArray - not file.\r\n    public void addBod(String name) {\r\n        Bod bod = new Bod(name);\r\n        dataArrayBod.add(bod);\r\n    }\r\n\r\n    //Sletter match. Ignorere kun store/små bogstaver\r\n    public void sletBod(String name) {\r\n        int slettet = 0;\r\n        for (int i = 0; i < dataArrayBod.size(); ) {\r\n            if (dataArrayBod.get(i).getNavn().equalsIgnoreCase(name)) {\r\n                dataArrayBod.remove(i);\r\n                ++slettet;\r\n            } else {\r\n                i++;\r\n            }\r\n        }\r\n        System.out.println(\"Slettet antal boder: \" + slettet);\r\n    }\r\n\r\n    //return a string describing Frivillige who's first or lastname matches name\r\n    //Søg efter \"signe\" eller \"olsen\" ikke \"signe olsen\"\r\n    public String findBod(String name) {\r\n        String names = \"\";\r\n        ArrayList<Bod> personArray = searchArray(name);\r\n        for (Bod bod : personArray) {\r\n            names = names + bod.toString() + \"\\n\";\r\n        }\r\n        if (names.equals(\"\")) {\r\n            return \"Intet match\";\r\n        } else {\r\n            return \"Personer som matcher søgeord: \\n\\n\" + names;\r\n        }\r\n    }\r\n\r\n    //Printer alle frivillige i dataArray\r\n    public String visAlleBoder() {\r\n        StringBuilder list = new StringBuilder();\r\n        for (int i = 0; i < dataArrayBod.size(); i++) {\r\n            list.append(dataArrayBod.get(i).getNavn()+\"\\n\");\r\n        }\r\n        if (list.toString().equals(\"\")) {\r\n            return \"Ingen frivillige blev fundet.\";\r\n        } else {\r\n            return \"Frivillige: \\n\\n\" + list;\r\n        }\r\n    }\r\n\r\n    //changes the first bod matching \"bodToChange\"\r\n    public void changeBod(String bodToChange, String name) {\r\n        int index = 0;\r\n        for (int i = 0; i < dataArrayBod.size(); i++) {\r\n            if (dataArrayBod.get(i).getNavn().equalsIgnoreCase(bodToChange)) {\r\n                index = i;\r\n                Bod bod = new Bod(name);\r\n                bod.setNavn(name);\r\n                dataArrayBod.set(index, bod);\r\n                break; //Kun den første -> så break\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    public Bod getBod(int index) {\r\n        return dataArrayBod.get(index);\r\n    }\r\n\r\n    /*Returns ArrayList containing all boder which name includes the searchWord or letter.\r\n    It is possible to search with spaces ex; \"kebab hut\". */\r\n    private ArrayList<Bod> searchArray(String name) {\r\n        ArrayList<Bod> nameList = new ArrayList<>();\r\n        String[] parts = name.split(\" \"); //Hvis name fx er \"Pizza bod\" så oprettes string[] pizza og bod\r\n        for (int i = 0; i < dataArrayBod.size(); i++) {\r\n            boolean b = true; //Som udgangspunkt antager vi at der er søgt rigtigt\r\n            for (int j = 0; j < parts.length; j++) {\r\n                if (!parts[j].equals(\"\")) { //Er det et mellemrum så søger vi ikke længere\r\n                    if (!dataArrayBod.get(i).getNavn().toLowerCase().contains(parts[j].toLowerCase())) { //findes det i navnet så tilføjes bod\r\n                        b = false;\r\n                    }\r\n                }\r\n            }\r\n            if (b) nameList.add(dataArrayBod.get(i));\r\n        }\r\n        return nameList;\r\n    }\r\n\r\n    public String getVagt(int id, int vagtnr) {\r\n        String vagt = \"\";\r\n        for (int b = 0; b < dataArrayBod.size(); b++) {{\r\n                if(!dataArrayBod.get(b).vagtArray.get(vagtnr).personIdList.isEmpty()){\r\n                    vagt = vagt + dataArrayBod.get(b).getNavn();\r\n                }\r\n            }\r\n        }\r\n\r\n        return vagt;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/gruppe8/backend/DataHandlerBod.java b/src/main/java/gruppe8/backend/DataHandlerBod.java
+--- a/src/main/java/gruppe8/backend/DataHandlerBod.java	(revision 7c9aae0dc888528f4e7df1755c2e8f23894dbb83)
++++ b/src/main/java/gruppe8/backend/DataHandlerBod.java	(date 1651872122638)
+@@ -7,7 +7,7 @@
+     BufferedWriter out;
+     BufferedReader in;
+     static String filePath = "src/main/java/gruppe8/Boder.txt";
+-    private final ArrayList<Bod> dataArrayBod = new ArrayList<>();
++    public final ArrayList<Bod> dataArrayBod = new ArrayList<>();
+ 
+ 
+     //opens default file "Boder" and stores the data in dataArray
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"bc680fdb-16b9-4664-b756-f3952a41b494\" name=\"Changes\" comment=\"Tilføjet vagt + metoder til datahandlerne\">\r\n      <change afterPath=\"$PROJECT_DIR$/Additionals/Koncept-Klassediagram.puml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Additionals/DesignDiagram.puml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Additionals/Design-Klassediagram.puml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Additionals/DomainModel.puml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"28hWhX6JgPbb95paBA2cx8OtKJI\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"gruppe8.backend.Main\" />\r\n      <module name=\"OOP_Eksamen\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"gruppe8.backend.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"bc680fdb-16b9-4664-b756-f3952a41b494\" name=\"Changes\" comment=\"\" />\r\n      <created>1651669418517</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1651669418517</updated>\r\n      <workItem from=\"1651669420190\" duration=\"16644000\" />\r\n      <workItem from=\"1651754559839\" duration=\"23068000\" />\r\n      <workItem from=\"1651835521155\" duration=\"10662000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Test\">\r\n      <created>1651671530867</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651671530867</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Test + navnændring a fil\">\r\n      <created>1651671863701</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651671863701</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Tilføjet bod og datahandlerBod\">\r\n      <created>1651689505220</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651689505220</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Tilføjet vagt + metoder til datahandlerne\">\r\n      <created>1651692876609</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651692876609</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Tilføjet vagt + metoder til datahandlerne\">\r\n      <created>1651782016480</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651782016480</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Tilføjet vagt + metoder til datahandlerne\">\r\n      <created>1651859870400</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651859870400</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Test\" />\r\n    <MESSAGE value=\"Test + navnændring a fil\" />\r\n    <MESSAGE value=\"Tilføjet bod og datahandlerBod\" />\r\n    <MESSAGE value=\"Tilføjet vagt + metoder til datahandlerne\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Tilføjet vagt + metoder til datahandlerne\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <watches-manager>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"bod\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7c9aae0dc888528f4e7df1755c2e8f23894dbb83)
++++ b/.idea/workspace.xml	(date 1651872124977)
+@@ -4,13 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Tilføjet vagt + metoder til datahandlerne">
+-      <change afterPath="$PROJECT_DIR$/Additionals/Koncept-Klassediagram.puml" afterDir="false" />
++    <list default="true" id="b74730cc-517a-4790-b2d8-a979c196341b" name="Changes" comment="Tilføjet vagt + metoder til datahandlerne">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Additionals/DesignDiagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Additionals/Design-Klassediagram.puml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Additionals/DomainModel.puml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,13 +18,28 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
++        <option value="UML Sequence" />
++        <option value="UML Activity" />
+         <option value="Class" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="Merging" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitSEFilterConfiguration">
++    <file-type-list>
++      <filtered-out-file-type name="LOCAL_BRANCH" />
++      <filtered-out-file-type name="REMOTE_BRANCH" />
++      <filtered-out-file-type name="TAG" />
++      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
++    </file-type-list>
++  </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+@@ -37,18 +50,40 @@
+       </MavenGeneralSettings>
+     </option>
+   </component>
+-  <component name="ProjectId" id="28hWhX6JgPbb95paBA2cx8OtKJI" />
++  <component name="ProjectId" id="28j1312lwZBi7tge8hqqqgkceqH" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
++    <property name="DefaultPlantUmlFileTemplate" value="UML Activity" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
++    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="nodejs_package_manager_path" value="npm" />
++    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+   </component>
+-  <component name="RunManager">
++  <component name="RecentsManager">
++    <key name="CopyClassDialog.RECENTS_KEY">
++      <recent name="gruppe8.gui" />
++    </key>
++  </component>
++  <component name="RunManager" selected="Application.GUI">
++    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="gruppe8.gui.GUI" />
++      <module name="OOP_Eksamen" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="gruppe8.gui.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="gruppe8.backend.Main" />
+       <module name="OOP_Eksamen" />
+@@ -64,6 +99,10 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Main" />
++        <item itemvalue="Application.GUI" />
++        <item itemvalue="Application.GUI" />
++        <item itemvalue="Application.Main" />
+         <item itemvalue="Application.Main" />
+       </list>
+     </recent_temporary>
+@@ -71,56 +110,57 @@
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+-      <changelist id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="" />
+-      <created>1651669418517</created>
++      <changelist id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="" />
++      <created>1651714985401</created>
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+-      <updated>1651669418517</updated>
+-      <workItem from="1651669420190" duration="16644000" />
+-      <workItem from="1651754559839" duration="23068000" />
+-      <workItem from="1651835521155" duration="10662000" />
++      <updated>1651714985401</updated>
++      <workItem from="1651714987930" duration="645000" />
++      <workItem from="1651741076005" duration="209000" />
++      <workItem from="1651746305982" duration="45999000" />
++      <workItem from="1651836428753" duration="358000" />
+     </task>
+-    <task id="LOCAL-00001" summary="Test">
+-      <created>1651671530867</created>
++    <task id="LOCAL-00001" summary="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)">
++      <created>1651715587591</created>
+       <option name="number" value="00001" />
+       <option name="presentableId" value="LOCAL-00001" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651671530867</updated>
++      <updated>1651715587591</updated>
+     </task>
+-    <task id="LOCAL-00002" summary="Test + navnændring a fil">
+-      <created>1651671863701</created>
++    <task id="LOCAL-00002" summary="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker">
++      <created>1651756965606</created>
+       <option name="number" value="00002" />
+       <option name="presentableId" value="LOCAL-00002" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651671863701</updated>
++      <updated>1651756965606</updated>
+     </task>
+-    <task id="LOCAL-00003" summary="Tilføjet bod og datahandlerBod">
+-      <created>1651689505220</created>
++    <task id="LOCAL-00003" summary="Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer.">
++      <created>1651773666692</created>
+       <option name="number" value="00003" />
+       <option name="presentableId" value="LOCAL-00003" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651689505220</updated>
++      <updated>1651773666692</updated>
+     </task>
+-    <task id="LOCAL-00004" summary="Tilføjet vagt + metoder til datahandlerne">
+-      <created>1651692876609</created>
++    <task id="LOCAL-00004" summary="Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id">
++      <created>1651774508610</created>
+       <option name="number" value="00004" />
+       <option name="presentableId" value="LOCAL-00004" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651692876609</updated>
++      <updated>1651774508610</updated>
+     </task>
+-    <task id="LOCAL-00005" summary="Tilføjet vagt + metoder til datahandlerne">
+-      <created>1651782016480</created>
++    <task id="LOCAL-00005" summary="Små detaljer samt menuBar er nu fikset og virker.">
++      <created>1651779693985</created>
+       <option name="number" value="00005" />
+       <option name="presentableId" value="LOCAL-00005" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651782016480</updated>
++      <updated>1651779693985</updated>
+     </task>
+-    <task id="LOCAL-00006" summary="Tilføjet vagt + metoder til datahandlerne">
+-      <created>1651859870400</created>
++    <task id="LOCAL-00006" summary="ListViews skal måske fikses, ellers kun forbindelser.">
++      <created>1651795770112</created>
+       <option name="number" value="00006" />
+       <option name="presentableId" value="LOCAL-00006" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651859870400</updated>
++      <updated>1651795770112</updated>
+     </task>
+     <option name="localTasksCounter" value="7" />
+     <servers />
+@@ -133,24 +173,32 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="Merging" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
+     </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="Test" />
+-    <MESSAGE value="Test + navnændring a fil" />
+-    <MESSAGE value="Tilføjet bod og datahandlerBod" />
+-    <MESSAGE value="Tilføjet vagt + metoder til datahandlerne" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Tilføjet vagt + metoder til datahandlerne" />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <watches-manager>
+-      <configuration name="Application">
+-        <watch expression="bod" />
+-      </configuration>
+-    </watches-manager>
++    <MESSAGE value="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)" />
++    <MESSAGE value="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker" />
++    <MESSAGE value="Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer." />
++    <MESSAGE value="Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id" />
++    <MESSAGE value="Små detaljer samt menuBar er nu fikset og virker." />
++    <MESSAGE value="Mangler kun connections nu." />
++    <MESSAGE value="ListViews skal måske fikses, ellers kun forbindelser." />
++    <option name="LAST_COMMIT_MESSAGE" value="ListViews skal måske fikses, ellers kun forbindelser." />
+   </component>
+ </project>
+\ No newline at end of file

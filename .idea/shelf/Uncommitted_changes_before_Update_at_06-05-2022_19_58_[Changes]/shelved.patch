@@ -1,0 +1,207 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"91d9913a-a816-4455-877c-0301bd857638\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/gui/GUI.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/gui/GUI.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/module-info.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/module-info.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"UML Sequence\" />\r\n        <option value=\"UML Activity\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"28j1312lwZBi7tge8hqqqgkceqH\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DefaultPlantUmlFileTemplate\" value=\"UML Activity\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"configurable.group.appearance\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"gruppe8.gui\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.GUI\">\r\n    <configuration name=\"GUI\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"gruppe8.gui.GUI\" />\r\n      <module name=\"OOP_Eksamen\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"gruppe8.gui.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"gruppe8.backend.Main\" />\r\n      <module name=\"OOP_Eksamen\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"gruppe8.backend.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.GUI\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.GUI\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"91d9913a-a816-4455-877c-0301bd857638\" name=\"Changes\" comment=\"\" />\r\n      <created>1651714985401</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1651714985401</updated>\r\n      <workItem from=\"1651714987930\" duration=\"645000\" />\r\n      <workItem from=\"1651741076005\" duration=\"209000\" />\r\n      <workItem from=\"1651746305982\" duration=\"45999000\" />\r\n      <workItem from=\"1651836428753\" duration=\"358000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)\">\r\n      <created>1651715587591</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651715587591</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker\">\r\n      <created>1651756965606</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651756965606</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer.\">\r\n      <created>1651773666692</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651773666692</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id\">\r\n      <created>1651774508610</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651774508610</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Små detaljer samt menuBar er nu fikset og virker.\">\r\n      <created>1651779693985</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651779693985</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"ListViews skal måske fikses, ellers kun forbindelser.\">\r\n      <created>1651795770112</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651795770112</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"Merging\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)\" />\r\n    <MESSAGE value=\"Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker\" />\r\n    <MESSAGE value=\"Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer.\" />\r\n    <MESSAGE value=\"Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id\" />\r\n    <MESSAGE value=\"Små detaljer samt menuBar er nu fikset og virker.\" />\r\n    <MESSAGE value=\"Mangler kun connections nu.\" />\r\n    <MESSAGE value=\"ListViews skal måske fikses, ellers kun forbindelser.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"ListViews skal måske fikses, ellers kun forbindelser.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,17 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
++    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="ListViews skal måske fikses, ellers kun forbindelser.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/GUI.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -24,8 +15,6 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="UML Sequence" />
+-        <option value="UML Activity" />
+         <option value="Class" />
+       </list>
+     </option>
+@@ -33,18 +22,10 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="Merging" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="GitSEFilterConfiguration">
+-    <file-type-list>
+-      <filtered-out-file-type name="LOCAL_BRANCH" />
+-      <filtered-out-file-type name="REMOTE_BRANCH" />
+-      <filtered-out-file-type name="TAG" />
+-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+-    </file-type-list>
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -56,24 +37,16 @@
+       </MavenGeneralSettings>
+     </option>
+   </component>
+-  <component name="ProjectId" id="28j1312lwZBi7tge8hqqqgkceqH" />
++  <component name="ProjectId" id="28hWhX6JgPbb95paBA2cx8OtKJI" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
+-    <property name="DefaultPlantUmlFileTemplate" value="UML Activity" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="nodejs_package_manager_path" value="npm" />
+-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+-  </component>
+-  <component name="RecentsManager">
+-    <key name="CopyClassDialog.RECENTS_KEY">
+-      <recent name="gruppe8.gui" />
+-    </key>
+   </component>
+   <component name="RunManager" selected="Application.GUI">
+     <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+@@ -104,68 +77,62 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Main" />
+         <item itemvalue="Application.GUI" />
+         <item itemvalue="Application.Main" />
+         <item itemvalue="Application.GUI" />
++        <item itemvalue="Application.Main" />
+       </list>
+     </recent_temporary>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+-      <changelist id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="" />
+-      <created>1651714985401</created>
++      <changelist id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="" />
++      <created>1651669418517</created>
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+-      <updated>1651714985401</updated>
+-      <workItem from="1651714987930" duration="645000" />
+-      <workItem from="1651741076005" duration="209000" />
+-      <workItem from="1651746305982" duration="45999000" />
+-      <workItem from="1651836428753" duration="358000" />
++      <updated>1651669418517</updated>
++      <workItem from="1651669420190" duration="16644000" />
++      <workItem from="1651754559839" duration="23068000" />
++      <workItem from="1651835521155" duration="10662000" />
+     </task>
+-    <task id="LOCAL-00001" summary="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)">
+-      <created>1651715587591</created>
++    <task id="LOCAL-00001" summary="Test">
++      <created>1651671530867</created>
+       <option name="number" value="00001" />
+       <option name="presentableId" value="LOCAL-00001" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651715587591</updated>
++      <updated>1651671530867</updated>
+     </task>
+-    <task id="LOCAL-00002" summary="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker">
+-      <created>1651756965606</created>
++    <task id="LOCAL-00002" summary="Test + navnændring a fil">
++      <created>1651671863701</created>
+       <option name="number" value="00002" />
+       <option name="presentableId" value="LOCAL-00002" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651756965606</updated>
++      <updated>1651671863701</updated>
+     </task>
+-    <task id="LOCAL-00003" summary="Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer.">
+-      <created>1651773666692</created>
++    <task id="LOCAL-00003" summary="Tilføjet bod og datahandlerBod">
++      <created>1651689505220</created>
+       <option name="number" value="00003" />
+       <option name="presentableId" value="LOCAL-00003" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651773666692</updated>
++      <updated>1651689505220</updated>
+     </task>
+-    <task id="LOCAL-00004" summary="Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id">
+-      <created>1651774508610</created>
++    <task id="LOCAL-00004" summary="Tilføjet vagt + metoder til datahandlerne">
++      <created>1651692876609</created>
+       <option name="number" value="00004" />
+       <option name="presentableId" value="LOCAL-00004" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651774508610</updated>
++      <updated>1651692876609</updated>
+     </task>
+-    <task id="LOCAL-00005" summary="Små detaljer samt menuBar er nu fikset og virker.">
+-      <created>1651779693985</created>
++    <task id="LOCAL-00005" summary="Tilføjet vagt + metoder til datahandlerne">
++      <created>1651782016480</created>
+       <option name="number" value="00005" />
+       <option name="presentableId" value="LOCAL-00005" />
+       <option name="project" value="LOCAL" />
+-      <updated>1651779693985</updated>
++      <updated>1651782016480</updated>
+     </task>
+-    <task id="LOCAL-00006" summary="ListViews skal måske fikses, ellers kun forbindelser.">
+-      <created>1651795770112</created>
+-      <option name="number" value="00006" />
+-      <option name="presentableId" value="LOCAL-00006" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1651795770112</updated>
+-    </task>
+-    <option name="localTasksCounter" value="7" />
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -182,7 +149,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="Merging" />
++                        <option value="backend" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -195,13 +162,10 @@
+     </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)" />
+-    <MESSAGE value="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker" />
+-    <MESSAGE value="Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer." />
+-    <MESSAGE value="Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id" />
+-    <MESSAGE value="Små detaljer samt menuBar er nu fikset og virker." />
+-    <MESSAGE value="Mangler kun connections nu." />
+-    <MESSAGE value="ListViews skal måske fikses, ellers kun forbindelser." />
+-    <option name="LAST_COMMIT_MESSAGE" value="ListViews skal måske fikses, ellers kun forbindelser." />
++    <MESSAGE value="Test" />
++    <MESSAGE value="Test + navnændring a fil" />
++    <MESSAGE value="Tilføjet bod og datahandlerBod" />
++    <MESSAGE value="Tilføjet vagt + metoder til datahandlerne" />
++    <option name="LAST_COMMIT_MESSAGE" value="Tilføjet vagt + metoder til datahandlerne" />
+   </component>
+ </project>
+\ No newline at end of file

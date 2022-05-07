@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="Maven: org.openjfx:javafx-controls:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-controls/18-ea+6/javafx-controls-18-ea+6.jar" />
+  </library>
+  <library name="Maven: org.openjfx:javafx-controls:win:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-controls/18-ea+6/javafx-controls-18-ea+6-win.jar" />
+  </library>
+  <library name="Maven: org.openjfx:javafx-graphics:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-graphics/18-ea+6/javafx-graphics-18-ea+6.jar" />
+  </library>
+  <library name="Maven: org.openjfx:javafx-graphics:win:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-graphics/18-ea+6/javafx-graphics-18-ea+6-win.jar" />
+  </library>
+  <library name="Maven: org.openjfx:javafx-base:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-base/18-ea+6/javafx-base-18-ea+6.jar" />
+  </library>
+  <library name="Maven: org.openjfx:javafx-base:win:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-base/18-ea+6/javafx-base-18-ea+6-win.jar" />
+  </library>
+  <library name="Maven: org.openjfx:javafx-fxml:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-fxml/18-ea+6/javafx-fxml-18-ea+6.jar" />
+  </library>
+  <library name="Maven: org.openjfx:javafx-fxml:win:18-ea+6">
+    <archive path="C:/Users/JayHo/.m2/repository/org/openjfx/javafx-fxml/18-ea+6/javafx-fxml-18-ea+6-win.jar" />
+  </library>
+  <library name="Maven: org.controlsfx:controlsfx:11.1.0">
+    <archive path="C:/Users/JayHo/.m2/repository/org/controlsfx/controlsfx/11.1.0/controlsfx-11.1.0.jar" />
+  </library>
+  <library name="Maven: org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0">
+    <archive path="C:/Users/JayHo/.m2/repository/org/kordamp/bootstrapfx/bootstrapfx-core/0.4.0/bootstrapfx-core-0.4.0.jar" />
+  </library>
+  <library name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.1">
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar" />
+  </library>
+  <library name="Maven: org.opentest4j:opentest4j:1.2.0">
+    <archive path="C:/Users/JayHo/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar" />
+  </library>
+  <library name="Maven: org.junit.platform:junit-platform-commons:1.8.1">
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar" />
+  </library>
+  <library name="Maven: org.apiguardian:apiguardian-api:1.1.2">
+    <archive path="C:/Users/JayHo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar" />
+  </library>
+  <library name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.1">
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar" />
+  </library>
+  <library name="Maven: org.junit.platform:junit-platform-engine:1.8.1">
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar" />
+  </library>
+  <library name="junit.jupiter">
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar" />
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar" />
+    <archive path="C:/Users/JayHo/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar" />
+    <archive path="C:/Users/JayHo/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar" />
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar" />
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar" />
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar" />
+    <archive path="C:/Users/JayHo/.m2/repository/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar" />
+  </library>
+  <library name="Python 3.9 interpreter library">
+    <archive path="C:/Users/JayHo/AppData/Local/Programs/Python/Python39/DLLs" />
+    <archive path="C:/Users/JayHo/AppData/Local/Programs/Python/Python39/Lib" />
+    <archive path="C:/Users/JayHo/AppData/Local/Programs/Python/Python39" />
+    <archive path="C:/Users/JayHo/AppData/Local/Programs/Python/Python39/Lib/site-packages" />
+    <archive path="C:/Users/JayHo/AppData/Roaming/JetBrains/IntelliJIdea2021.3/plugins/python/helpers/python-skeletons" />
+  </library>
+</eclipse-userlibraries>
+

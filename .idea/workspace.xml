@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Tilføjet vagt + metoder til datahandlerne">
-      <change afterPath="$PROJECT_DIR$/Additionals/Koncept-Klassediagram.puml" afterDir="false" />
+    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Diagrammer">
+      <change afterPath="$PROJECT_DIR$/Additionals/Sekvensdiagram-visVagtplan.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Additionals/DesignDiagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Additionals/Design-Klassediagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Additionals/DomainModel.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Additionals/Design-Klassediagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Additionals/Design-Klassediagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Additionals/Koncept-Klassediagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Additionals/Koncept-Klassediagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Additionals/SystemSequence.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Additionals/Sekvensdiagram-OpretFrivillig.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Vagt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="UML Sequence" />
       </list>
     </option>
   </component>
@@ -44,11 +46,25 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultPlantUmlFileTemplate" value="UML Sequence" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GUI">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gruppe8.gui.GUI" />
+      <module name="OOP_Eksamen" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppe8.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gruppe8.backend.Main" />
       <module name="OOP_Eksamen" />
@@ -64,6 +80,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -79,6 +96,7 @@
       <workItem from="1651669420190" duration="16644000" />
       <workItem from="1651754559839" duration="23068000" />
       <workItem from="1651835521155" duration="10662000" />
+      <workItem from="1651910079476" duration="4998000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1651671530867</created>
@@ -122,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651859870400</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Diagrammer">
+      <created>1651870394917</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651870394917</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,7 +169,8 @@
     <MESSAGE value="Test + navnændring a fil" />
     <MESSAGE value="Tilføjet bod og datahandlerBod" />
     <MESSAGE value="Tilføjet vagt + metoder til datahandlerne" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tilføjet vagt + metoder til datahandlerne" />
+    <MESSAGE value="Diagrammer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Diagrammer" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

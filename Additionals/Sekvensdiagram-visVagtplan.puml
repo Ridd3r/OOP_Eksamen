@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+' -----  participants ----
+participant login [
+= Window
+----
+""log-in screen""
+]
+participant vagtplan [
+=Window
+----
+""Vagtplan""
+]
+participant DataHandlerBod
+participant Bod
+
+' --------  Arrows -------
+login -> vagtplan : Frivillig
+loop for each vagtNr -> 21 times
+vagtplan -> DataHandlerBod : getVagt(id, vagtNr) : String
+DataHandlerBod -> Bod : getNavn()
+Bod -> DataHandlerBod : Bod.navn
+DataHandlerBod -> vagtplan : bod.navn
+end
+
+
+
+@enduml

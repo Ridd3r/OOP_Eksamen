@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+' Participants
+participant Window [
+= Window
+----
+""User Interface""
+]
+
+/'Arrows/interactions'/
+
+Window -> "DataHandlerFrivillig" : opretFrivilliig():void
+
+"DataHandlerFrivillig" -> "DataHandlerFrivillig" : addFrivillig():void
+/'Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response'/
+@enduml

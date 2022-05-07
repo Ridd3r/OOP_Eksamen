@@ -15,11 +15,11 @@ object DataHandlerFrivillig {
 
 /' Herunder kommer pile '/
 
-DataHandlerFrivillig "1"-up->"         *" Frivillig
-Bod "1" o-down- "     1" DataHandlerFrivillig
-Bod "1" o-right- "*" Vagt
-DataHandlerBod "1" --> "*" Bod
-Vagt " *" ..> "1" Frivillig
+DataHandlerFrivillig "1   "-->"*" Frivillig
+Bod "1" o-- "1" DataHandlerFrivillig
+Bod "1  " o-- " * " Vagt
+DataHandlerBod "1" -left-> "*" Bod
+Vagt " *" ..> "1  " Frivillig
 
 
 

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -60,6 +61,14 @@ public class StallsList extends BorderPane {
 
         stallsTableView.getColumns().add(stallNameColumn);
 
+        final String[] temp1 = new String[1];
+
+        stallsTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            temp1[0] = newValue.getNavn();
+            stallsHandler.setCurrentBod(temp1[0]);
+            System.out.println("Selected Bod: " + temp1[0] + "\n");
+        });
+
         hBox.getChildren().add(stallsTableView);
 
         stallsHandler.closeFile();
@@ -72,14 +81,19 @@ public class StallsList extends BorderPane {
         Button createStall = new Button("Opret en Bod");
         createStall.setAlignment(Pos.BOTTOM_LEFT);
         createStall.setOnAction(e -> main.moveToCreateStall());
+        Button deleteStall = new Button("Slet Bod");
+        deleteStall.setAlignment(Pos.BOTTOM_CENTER);
+        deleteStall.setOnAction(e -> System.out.print(stallsHandler.currentBod + "\n"));
+        deleteStall.setOnAction(actionEvent -> {stallsHandler.openFile(); stallsHandler.sletBod(stallsHandler.currentBod);stallsHandler.closeFile();main.moveToStallsList();});
         Button chooseStall = new Button("Se Vagtplan");
         chooseStall.setAlignment(Pos.BOTTOM_RIGHT);
         chooseStall.setOnAction(e -> main.moveToStallSchedule());
-        button.getChildren().addAll(createStall, chooseStall);
+        button.getChildren().addAll(createStall,deleteStall, chooseStall);
 
         stallsList.setAlignment(Pos.CENTER);
         stallsList.setSpacing(10);
         stallsList.getChildren().addAll(topSign, vBox, button);
+
         return stallsList;
     }
 

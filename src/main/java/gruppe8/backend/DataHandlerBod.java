@@ -1,14 +1,18 @@
 package gruppe8.backend;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class DataHandlerBod {
     BufferedWriter out;
     BufferedReader in;
     static String filePath = "src/main/java/gruppe8/Boder.txt";
     public final ArrayList<Bod> dataArrayBod = new ArrayList<>();
-
+    public String currentBod = "";
+    public Integer currentVagt;
 
     //opens default file "Boder" and stores the data in dataArray
     public void openFile() {
@@ -23,7 +27,6 @@ public class DataHandlerBod {
     }
 
     // Will write dataArray to text file before closing. Adding Test Admin to the end of the list.
-
     public void closeFile() {
         try {
             for (int i = 0; i < dataArrayBod.size(); i++) {
@@ -32,7 +35,7 @@ public class DataHandlerBod {
                 for (int n = 0; n < dataArrayBod.get(i).vagtArray.size(); n++) {
                     s = s + ",";
                     for (int c = 0; c < dataArrayBod.get(i).vagtArray.get(n).personIdList.size(); c++) {
-                        if (c > 0) s += " ";
+                        if (c > 0) s += "";
                         s = s + dataArrayBod.get(i).vagtArray.get(n).personIdList.get(c);
                     }
                 }
@@ -42,6 +45,7 @@ public class DataHandlerBod {
 
             out.flush();
             out.close();
+            dataArrayBod.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,11 +81,9 @@ public class DataHandlerBod {
         dataArrayBod.sort((f1, f2) -> {
             return f1.getNavn().compareToIgnoreCase(f2.getNavn()); //Den her sammenligning skal gerne give en int som er >=< end 0.
         });
-
     }
 
     //Add bod to dataArray - not file.
-    //Jacob Edit -> Nows adds to array and then file.
     public void addBod(String name) {
         DataHandlerBod addBod = new DataHandlerBod();
         addBod.openFile();
@@ -92,6 +94,7 @@ public class DataHandlerBod {
 
     //Sletter match. Ignorere kun store/små bogstaver
     public void sletBod(String name) {
+
         int slettet = 0;
         for (int i = 0; i < dataArrayBod.size(); ) {
             if (dataArrayBod.get(i).getNavn().equalsIgnoreCase(name)) {
@@ -100,9 +103,11 @@ public class DataHandlerBod {
             } else {
                 i++;
             }
+
         }
-        System.out.println("Slettet antal boder: " + slettet);
+        //System.out.println("Slettet antal boder: " + slettet);
     }
+
 
     //return a string describing Frivillige who's first or lastname matches name
     //Søg efter "signe" eller "olsen" ikke "signe olsen"
@@ -170,15 +175,30 @@ public class DataHandlerBod {
         return nameList;
     }
 
+
     public String getVagt(int id, int vagtnr) {
         String vagt = "";
-        for (int b = 0; b < dataArrayBod.size(); b++) {{
-                if(!dataArrayBod.get(b).vagtArray.get(vagtnr).personIdList.isEmpty()){
-                    vagt = vagt + dataArrayBod.get(b).getNavn();
+        for (int b = 0; b < dataArrayBod.size(); b++) {
+            if (!dataArrayBod.get(b).vagtArray.get(vagtnr).personIdList.isEmpty()) {
+                for (int i = 0; i < dataArrayBod.get(b).vagtArray.get(vagtnr).personIdList.size(); i++) {
+                    if (dataArrayBod.get(b).vagtArray.get(vagtnr).personIdList.get(i) == id) {
+                        vagt = vagt + dataArrayBod.get(b).getNavn();
+                    }
                 }
+
             }
+
         }
 
         return vagt;
     }
+
+    public void setCurrentBod(String a) {
+        currentBod = a;
+    }
+
+    public String getCurrentBod() {
+        return currentBod;
+    }
+
 }

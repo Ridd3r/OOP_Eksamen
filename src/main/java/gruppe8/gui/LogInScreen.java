@@ -1,5 +1,6 @@
 package gruppe8.gui;
 
+import gruppe8.backend.DataHandlerFrivillig;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -31,6 +32,8 @@ public class LogInScreen extends BorderPane {
         logInSign.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
         topSign.getChildren().add(logInSign);
 
+        DataHandlerFrivillig loginValues = new DataHandlerFrivillig();
+
         VBox vBox = new VBox();
 
         HBox loginDetails = new HBox();
@@ -47,20 +50,26 @@ public class LogInScreen extends BorderPane {
         VBox textFields = new VBox();
         textFields.setAlignment(Pos.CENTER_RIGHT);
         textFields.setSpacing(10);
-        TextField usernameTextField = new TextField("Indtast brugernavn");
-        TextField passwordTextField = new TextField("Indtast adgangskode");
+        TextField usernameTextField = new TextField("Skriv dit ID (1-9)");
+        TextField passwordTextField = new TextField("Tryk på Frivillig i stedet");
         textFields.getChildren().addAll(usernameTextField, passwordTextField);
 
         loginDetails.getChildren().addAll(texts, textFields);
 
         vBox.getChildren().add(loginDetails);
 
+        final Integer[] temp1 = new Integer[1];
+
+        textFields.accessibleTextProperty().addListener((observable, oldValue, newValue) -> {
+            temp1[0] = Integer.valueOf(newValue);
+        });
+
         HBox button = new HBox();
         button.setAlignment(Pos.BOTTOM_CENTER);
         button.setSpacing(30);
         Button loginVolunteer = new Button("Frivillig");
         loginVolunteer.setAlignment(Pos.BOTTOM_LEFT);
-        loginVolunteer.setOnAction(e -> main.moveToVolunteerSchedule());
+        loginVolunteer.setOnAction(e -> {System.out.println(temp1[0]);loginValues.setTempId(temp1[0]);main.moveToVolunteerSchedule();});
         Button loginLeader = new Button("Ansvarlig");
         loginLeader.setAlignment(Pos.BOTTOM_RIGHT);
         loginLeader.setOnAction(e -> main.moveToLeaderOptions());

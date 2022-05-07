@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen.">
+    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStallWatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStallWatch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="backend" />
+        <entry key="$PROJECT_DIR$" value="GUIUpdate" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -177,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651875177093</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall">
+      <created>1651876734081</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651876734081</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +233,21 @@
     <MESSAGE value="ListViews skal måske fikses, ellers kun forbindelser." />
     <MESSAGE value="Merget finally complete" />
     <MESSAGE value="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen." />
+    <MESSAGE value="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="7" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.IOException" package="java.io" />
+          <option name="timeStamp" value="9" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

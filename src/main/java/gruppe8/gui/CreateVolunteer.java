@@ -75,8 +75,9 @@ public class CreateVolunteer extends BorderPane {
         buttons.setSpacing(30);
         buttons.setAlignment(Pos.BOTTOM_CENTER);
         Button opret = new Button("Opret Frivillig");
-        opret.setOnAction(e -> createVolunteer.addFrivillig(firstNameTextField.getText(), lastNameTextField.getText(),
-                Integer.parseInt(ageTextField.getText()), Integer.parseInt(phoneNumberTextField.getText()), emailTextField.getText()));
+        opret.setOnAction(e -> {createVolunteer.openFile();
+            createVolunteer.addFrivillig(firstNameTextField.getText(), lastNameTextField.getText(), Integer.parseInt(ageTextField.getText()),
+                    Integer.parseInt(phoneNumberTextField.getText()), emailTextField.getText()); createVolunteer.closeFile();});
         opret.setAlignment(Pos.BOTTOM_LEFT);
         Button goBackButton = new Button("Tilbage til Liste");
         goBackButton.setAlignment(Pos.BOTTOM_RIGHT);

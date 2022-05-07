@@ -29,7 +29,6 @@ public class Bod {
         vagtArray.get(vagtNr).personIdList.add(id);
     }
 
-
     public void setNavn(String navn) {
         this.navn = navn;
     }

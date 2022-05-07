@@ -1,7 +1,13 @@
 package gruppe8.gui;
 
+import gruppe8.backend.*;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -29,34 +35,135 @@ public class CreateStallWatch extends BorderPane {
         schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
         hTop.getChildren().add(schedule);
 
-        VBox top = new VBox();
+        DataHandlerFrivillig createWatchFrivilligHandler = new DataHandlerFrivillig();
+        DataHandlerBod createWatchBodHandler = new DataHandlerBod();
 
-        HBox volunteers = new HBox();
-        volunteers.setAlignment(Pos.TOP_CENTER);
-        HBox.setHgrow(volunteers, Priority.ALWAYS);
+        createWatchBodHandler.openFile();
+        createWatchFrivilligHandler.openFile();
 
-        VBox texts = new VBox();
-        texts.setAlignment(Pos.CENTER_LEFT);
-        texts.setSpacing(10);
-        Text volunteer = new Text("Frivillig: ");
-        Text timeslot = new Text("Tidslomme: ");
-        texts.getChildren().addAll(volunteer, timeslot);
+        HBox top = new HBox();
+        top.setAlignment(Pos.CENTER);
 
-        VBox textFields = new VBox();
-        textFields.setAlignment(Pos.CENTER_RIGHT);
-        textFields.setSpacing(10);
-        TextField volunteerField = new TextField("Indtast for at søge");
-        TextField timeslotField = new TextField("Vælg tidsramme");
-        textFields.getChildren().addAll(volunteerField, timeslotField);
+        HBox stallWatchBox = new HBox();
+        stallWatchBox.setAlignment(Pos.CENTER_LEFT);
 
-        volunteers.getChildren().addAll(texts, textFields);
+        TableView<Frivillig> volunteerTableView = new TableView<>();
+        volunteerTableView.setPrefWidth(150);
 
-        top.getChildren().add(volunteers);
+        ObservableList<Frivillig> persons = FXCollections.observableArrayList(createWatchFrivilligHandler.dataArray);
+
+        TableColumn<Frivillig, String> firstNameColumn = new TableColumn<>("Fornavn");
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        TableColumn<Frivillig, String> lastNameColumn = new TableColumn<>("Efternavn");
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+        volunteerTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        volunteerTableView.setItems(persons);
+
+        createWatchFrivilligHandler.closeFile();
+
+        volunteerTableView.getColumns().addAll(firstNameColumn, lastNameColumn);
+
+        stallWatchBox.getChildren().add(volunteerTableView);
+
+
+
+        HBox stallWatchBoxTwo = new HBox();
+        stallWatchBoxTwo.setAlignment(Pos.CENTER);
+
+        TableView<Bod> stallsTableView = new TableView<>();
+        stallsTableView.setPrefWidth(130);
+
+        ObservableList<Bod> items = FXCollections.observableArrayList(createWatchBodHandler.dataArrayBod);
+
+        TableColumn<Bod, String> stallNameColumn = new TableColumn<>("Bodens Navn");
+        stallNameColumn.setCellValueFactory(new PropertyValueFactory<>("navn"));
+
+        stallsTableView.setItems(items);
+        stallsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        stallsTableView.getColumns().add(stallNameColumn);
+
+        createWatchBodHandler.closeFile();
+
+        stallWatchBoxTwo.getChildren().add(stallsTableView);
+
+
+
+        HBox stallWatchBoxThree = new HBox();
+        stallWatchBoxThree.setAlignment(Pos.CENTER_RIGHT);
+
+        TableView<timeSlot> vagtTableView = new TableView<>();
+        vagtTableView.setPrefWidth(130);
+
+        final ObservableList<timeSlot> data = FXCollections.observableArrayList(
+                new timeSlot(0, "Mandag 8-12"),
+                new timeSlot(1, "Mandag 12-16"),
+                new timeSlot(2, "Mandag 16-20"),
+                new timeSlot(3, "Tirsdag 8-12"),
+                new timeSlot(4, "Tirsdag 12-16"),
+                new timeSlot(5, "Tirsdag 16-20"),
+                new timeSlot(6, "Onsdag 8-12"),
+                new timeSlot(7, "Onsdag 12-16"),
+                new timeSlot(8, "Onsdag 16-20"),
+                new timeSlot(9, "Torsdag 8-12"),
+                new timeSlot(10, "Torsdag 12-16"),
+                new timeSlot(11, "Torsdag 16-20"),
+                new timeSlot(12, "Fredag 8-12"),
+                new timeSlot(13, "Fredag 12-16"),
+                new timeSlot(14, "Fredag 16-20"),
+                new timeSlot(15, "Lørdag 8-12"),
+                new timeSlot(16, "Lørdag 12-16"),
+                new timeSlot(17, "Lørdag 16-20"),
+                new timeSlot(18, "Søndag 8-12"),
+                new timeSlot(19, "Søndag 12-16"),
+                new timeSlot(20, "Søndag 16-20")
+        );
+
+        TableColumn columnOne = new TableColumn("Tidsrum");
+        columnOne.setCellValueFactory(new PropertyValueFactory<timeSlot, String>("timeSlots"));
+
+        vagtTableView.setItems(data);
+        vagtTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        vagtTableView.getColumns().addAll(columnOne);
+
+        stallWatchBoxThree.getChildren().add(vagtTableView);
+
+        final String[] temp1 = new String[1];
+
+        stallsTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            temp1[0] = newValue.getNavn();
+            createWatchBodHandler.setCurrentBod(temp1[0]);
+            System.out.println("Selected Bod: " + temp1[0] + "\n");
+        });
+
+        final String[] temp2 = new String[2];
+
+        volunteerTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            temp2[0] = newValue.getFirstName();
+            createWatchFrivilligHandler.setTempFirstName(temp2[0]);
+            temp2[1] = newValue.getLastName();
+            createWatchFrivilligHandler.setTempLastName(temp2[1]);
+            System.out.println("Selected Person is: " + temp2[0] + " " + temp2[1] + "\n");
+        });
+
+        final Integer[] temp3 = new Integer[1];
+        //timeSlot slot = new timeSlot();
+
+        vagtTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            temp3[0] = newValue.getCurrentVagt();
+            //createWatchBodHandler.setCurrentVagt(temp3[0]);
+            System.out.println("Selected Slot is: " + temp3[0] + "\n");
+        });
+
+        top.getChildren().addAll(stallWatchBox, stallWatchBoxTwo, stallWatchBoxThree);
 
         VBox button = new VBox();
         button.setAlignment(Pos.BOTTOM_CENTER);
         Button confirm = new Button("Bekræft vagt");
-        confirm.setOnAction(e -> main.moveToStallSchedule());
+        confirm.setOnAction(e -> System.out.println(temp1));
         confirm.setAlignment(Pos.BOTTOM_CENTER);
         button.getChildren().add(confirm);
 
@@ -65,6 +172,41 @@ public class CreateStallWatch extends BorderPane {
         createWatch.getChildren().addAll(hTop, top, button);
 
         return createWatch;
+    }
+
+    public class timeSlot {
+        private final SimpleIntegerProperty idSlots;
+        private final SimpleStringProperty timeSlotNames;
+        public Integer currentVagt;
+
+        private timeSlot(int idSlot, String timeSlotName) {
+            this.idSlots = new SimpleIntegerProperty(idSlot);
+            this.timeSlotNames = new SimpleStringProperty(timeSlotName);
+        }
+
+        public Integer getIdSlots() {
+            return idSlots.get();
+        }
+
+        public void setIdSlots(int idSlot) {
+            idSlots.set(idSlot);
+        }
+
+        public String getTimeSlots() {
+            return timeSlotNames.get();
+        }
+
+        public void setTimeSlotNames(String timeSlotName) {
+            timeSlotNames.set(timeSlotName);
+        }
+
+        public void setCurrentVagt(Integer a) {
+            currentVagt = a;
+        }
+
+        public Integer getCurrentVagt() {
+            return currentVagt;
+        }
     }
 
     MenuBar getMenuBar() {

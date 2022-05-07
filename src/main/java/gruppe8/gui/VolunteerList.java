@@ -62,24 +62,35 @@ public class VolunteerList extends BorderPane {
         TableColumn<Frivillig, String> emailColumn = new TableColumn<>("Email");
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        //volunteerTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
         volunteerTableView.setItems(persons);
-
-        volunteerTableView.getColumns().addAll(firstNameColumn, lastNameColumn, ageColumn, phoneNumberColumn, emailColumn);
-
-        hBox.getChildren().add(volunteerTableView);
 
         frivilligHandler.closeFile();
 
+        volunteerTableView.getColumns().addAll(firstNameColumn, lastNameColumn, ageColumn, phoneNumberColumn, emailColumn);
+
+        final String[] temp1 = new String[2];
+
+        volunteerTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            temp1[0] = newValue.getFirstName();
+            frivilligHandler.setTempFirstName(temp1[0]);
+            temp1[1] = newValue.getLastName();
+            frivilligHandler.setTempLastName(temp1[1]);
+        });
+
+        hBox.getChildren().add(volunteerTableView);
+
         vBox.getChildren().add(hBox);
 
-        VBox button = new VBox();
+        HBox button = new HBox();
+        button.setSpacing(30);
         button.setAlignment(Pos.BOTTOM_CENTER);
         Button createVolunteer = new Button("Opret en Frivillig");
         createVolunteer.setAlignment(Pos.BOTTOM_CENTER);
         createVolunteer.setOnAction(e -> main.moveToCreateVolunteer());
-        button.getChildren().add(createVolunteer);
+        Button deleteVolunteer = new Button("Slet Frivillig");
+        deleteVolunteer.setAlignment(Pos.BOTTOM_CENTER);
+        deleteVolunteer.setOnAction(actionEvent -> {frivilligHandler.openFile(); frivilligHandler.sletFrivillig(frivilligHandler.tempFirstName, frivilligHandler.tempLastName); frivilligHandler.closeFile(); main.moveToVolunteerList(); }); //Note - Kan ikke få den til at virke uden IOException
+        button.getChildren().addAll(createVolunteer, deleteVolunteer);
 
         volunteerList.setAlignment(Pos.CENTER);
         volunteerList.setSpacing(10);
@@ -146,5 +157,5 @@ public class VolunteerList extends BorderPane {
         vBoxTop.getChildren().addAll(hBoxMenu, hBoxTopImg);
         return vBoxTop;
     }
-
 }
+

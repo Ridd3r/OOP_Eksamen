@@ -21,8 +21,6 @@ public class Vagt {
         }
     }
 
-    ;
-
     public static enum Dage {
         mandag, //0
         tirsdag, //1

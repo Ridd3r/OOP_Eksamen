@@ -12,6 +12,10 @@ public class DataHandlerFrivillig {
     BufferedReader in;
     static String filePath = "src/main/java/gruppe8/Frivillige.txt";
     public final ArrayList<Frivillig> dataArray = new ArrayList<>();
+    public String tempFirstName = "";
+    public String tempLastName = "";
+    public Integer tempId;
+
 
     //opens default file "Frivillige" and stores the data in dataArray
     public void openFile() {
@@ -40,6 +44,7 @@ public class DataHandlerFrivillig {
 
             out.flush();
             out.close();
+            dataArray.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,11 +83,11 @@ public class DataHandlerFrivillig {
                 return c;
             }
         });
-
     }
 
     //kunne måske return boolean value, så man har mulighed for at tjekke om en person blev tilføjet.
     //Add a person to dataArray - not file.
+    //Jacob edit -> Tilføjet handler så der kan skrives til filen også
     public void addFrivillig(String firstName, String lastName, int age, int number, String mail) {
         int id = 0;
         for(int i = 0; i < dataArray.size(); i++){
@@ -93,18 +98,25 @@ public class DataHandlerFrivillig {
         dataArray.add(person);
     }
 
-    public void sletFrivillig(int id) {
-        for(int i = 0; i < dataArray.size(); i++){
-            if(dataArray.get(i).getID() == id) {
+    public void sletFrivillig(String firstName, String lastName) { //Funktionalitet ikke indført - Virker i consol men ikke GUI
+        int slettet = 0;
+        for (int i = 0; i < dataArray.size(); ) {
+            if (dataArray.get(i).getFirstName().equalsIgnoreCase(firstName) && dataArray.get(i).getLastName().equalsIgnoreCase(lastName)) {
                 dataArray.remove(i);
-                break;
+                ++slettet;
+            } else {
+                i++;
             }
         }
     }
 
-
     public Frivillig getFrivillig(int id) {
-        return dataArray.get(id);
+        for (int i = 0; i < dataArray.size(); i++) {
+            if (dataArray.get(i).getID() == id) {
+                return dataArray.get(i);
+            }
+        }
+        return dataArray.get(0);
     }
 
     //return a string describing Frivillige who's first or lastname matches name
@@ -126,20 +138,27 @@ public class DataHandlerFrivillig {
     public String visAlle() {
         StringBuilder list = new StringBuilder();
         for (Frivillig person : dataArray) {
-            list.append(person.toString()).append("\n\n");
+            list.append(person.toString()).append("\n");
         }
         if (list.toString().equals("")) {
             return "Ingen frivillige blev fundet.";
         } else {
-            return "Frivillige: \n\n" + list;
+            return "Frivillige: \n" + list;
         }
+    }
+
+    public StringBuilder visAlleNavne() {
+        StringBuilder list = new StringBuilder();
+        for (Frivillig person : dataArray) {
+            list.append(person.getFirstName() + " ").append(person.getLastName()).append(",");
+        }
+        return list;
     }
 
     public void changeFrivillig(int index, String firstName, String lastName, int age, int number, String mail) {
         Frivillig person = new Frivillig(firstName, lastName, age, number, mail);
         dataArray.set(index, person);
     }
-
 
     /*Returns ArrayList containing all frivillige who's first or lastName includes the searchword or letter.
     It is possible to search with spaces ex; "Lars larsen" as the name, og "Signe L".
@@ -164,6 +183,24 @@ public class DataHandlerFrivillig {
         return nameList;
     }
 
+    public void setTempFirstName(String a) {
+        tempFirstName = a;
+    }
 
+    public void setTempLastName(String b) {
+        tempLastName = b;
+    }
+
+    public String getTempFirstName(String a) {
+        return tempFirstName;
+    }
+
+    public String getTempLastName(String b) {
+        return tempLastName;
+    }
+
+    public void setTempId(Integer a){
+        tempId = a;
+    }
 
 }

@@ -14,11 +14,6 @@ public class Bod {
     public ArrayList<Vagt> vagtArray = new ArrayList<>();
     public static DataHandlerFrivillig frivillig;
 
-    public static void setFrivillig(DataHandlerFrivillig writerF) {
-        frivillig = writerF;
-    }
-
-
     // ----------- Methods -----------------
 
     public void fillArray() {
@@ -34,13 +29,16 @@ public class Bod {
         vagtArray.get(vagtNr).personIdList.add(id);
     }
 
-
     public void setNavn(String navn) {
         this.navn = navn;
     }
 
     public String getNavn() {
         return navn;
+    }
+
+    public static void setFrivillig(DataHandlerFrivillig writerF) {
+        frivillig = writerF;
     }
 
     public ArrayList<Integer> getVagter(int id) {
@@ -54,8 +52,6 @@ public class Bod {
         }
         return vagtnr;
     }
-
-
 
     @Override
     public String toString() {

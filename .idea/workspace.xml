@@ -4,29 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="Tilføjet vagt + metoder til datahandlerne">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_controlsfx_controlsfx_11_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kordamp_bootstrapfx_bootstrapfx_core_0_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_18_ea_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Boder.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/Frivillige.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Bod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerBod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/DataHandlerFrivillig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Frivillig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/backend/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStallWatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateStallWatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/CreateVolunteer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/LogInScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/StallsList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gruppe8/gui/VolunteerSchedule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +29,27 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="UML Sequence" />
+        <option value="UML Activity" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="GUIUpdate" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -53,18 +61,40 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="28hWhX6JgPbb95paBA2cx8OtKJI" />
+  <component name="ProjectId" id="28j1312lwZBi7tge8hqqqgkceqH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultPlantUmlFileTemplate" value="UML Activity" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="gruppe8.gui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.GUI">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gruppe8.gui.GUI" />
+      <module name="OOP_Eksamen" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gruppe8.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gruppe8.backend.Main" />
       <module name="OOP_Eksamen" />
@@ -80,58 +110,91 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GUI" />
+        <item itemvalue="Application.GUI" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bc680fdb-16b9-4664-b756-f3952a41b494" name="Changes" comment="" />
-      <created>1651669418517</created>
+      <changelist id="91d9913a-a816-4455-877c-0301bd857638" name="Changes" comment="" />
+      <created>1651714985401</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1651669418517</updated>
-      <workItem from="1651669420190" duration="16644000" />
-      <workItem from="1651754559839" duration="23068000" />
-      <workItem from="1651835521155" duration="10662000" />
+      <updated>1651714985401</updated>
+      <workItem from="1651714987930" duration="645000" />
+      <workItem from="1651741076005" duration="209000" />
+      <workItem from="1651746305982" duration="45999000" />
+      <workItem from="1651836428753" duration="358000" />
     </task>
-    <task id="LOCAL-00001" summary="Test">
-      <created>1651671530867</created>
+    <task id="LOCAL-00001" summary="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)">
+      <created>1651715587591</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1651671530867</updated>
+      <updated>1651715587591</updated>
     </task>
-    <task id="LOCAL-00002" summary="Test + navnændring a fil">
-      <created>1651671863701</created>
+    <task id="LOCAL-00002" summary="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker">
+      <created>1651756965606</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1651671863701</updated>
+      <updated>1651756965606</updated>
     </task>
-    <task id="LOCAL-00003" summary="Tilføjet bod og datahandlerBod">
-      <created>1651689505220</created>
+    <task id="LOCAL-00003" summary="Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer.">
+      <created>1651773666692</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1651689505220</updated>
+      <updated>1651773666692</updated>
     </task>
-    <task id="LOCAL-00004" summary="Tilføjet vagt + metoder til datahandlerne">
-      <created>1651692876609</created>
+    <task id="LOCAL-00004" summary="Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id">
+      <created>1651774508610</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1651692876609</updated>
+      <updated>1651774508610</updated>
     </task>
-    <task id="LOCAL-00005" summary="Tilføjet vagt + metoder til datahandlerne">
-      <created>1651782016480</created>
+    <task id="LOCAL-00005" summary="Små detaljer samt menuBar er nu fikset og virker.">
+      <created>1651779693985</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1651782016480</updated>
+      <updated>1651779693985</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ListViews skal måske fikses, ellers kun forbindelser.">
+      <created>1651795770112</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651795770112</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merget finally complete">
+      <created>1651873058855</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651873058855</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen.">
+      <created>1651875177093</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651875177093</updated>
+    </task>
+    <task id="LOCAL-00009" summary="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall">
+      <created>1651876734081</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651876734081</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,24 +205,49 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Merging" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test" />
-    <MESSAGE value="Test + navnændring a fil" />
-    <MESSAGE value="Tilføjet bod og datahandlerBod" />
-    <MESSAGE value="Tilføjet vagt + metoder til datahandlerne" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tilføjet vagt + metoder til datahandlerne" />
+    <MESSAGE value="Fjernet unødvendige filer samt tilføjet GUI login, fører til enten frivillig vagtplan eller ansvarlig muligheder (tbc)" />
+    <MESSAGE value="Tilføjet de resterende klasser der indeholder scenerne samt udfyldt CreateVolunteer og VolunteerList så som udgangspunkter viser noget og virker" />
+    <MESSAGE value="Opdateret diverse scener samt opsat vagtplan for boder, mangler små detaljer." />
+    <MESSAGE value="Små detaljer på Stallschedule så der nu er faktiske kanter&#10;Mangler at få sat forbindelse til de faktiske boder - måske et id" />
+    <MESSAGE value="Små detaljer samt menuBar er nu fikset og virker." />
+    <MESSAGE value="Mangler kun connections nu." />
+    <MESSAGE value="ListViews skal måske fikses, ellers kun forbindelser." />
+    <MESSAGE value="Merget finally complete" />
+    <MESSAGE value="Create Stall er færdig, der oprettes nu korrekt.&#10;Ændring i addBod, tilføjet en datahandler objekt så eventhandleren faktisk skriver til filen." />
+    <MESSAGE value="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreateVolunteer er helt færdig og der oprettes nu en ny hver gang som gemmes i filen.&#10;DataHandlerFrivillig addFrivillig opdateret til at gemme i filen&#10;Lille detalje ændring i CreateStall" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="bod" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="7" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.IOException" package="java.io" />
+          <option name="timeStamp" value="9" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

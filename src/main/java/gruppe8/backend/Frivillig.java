@@ -75,7 +75,15 @@ public class Frivillig {
         return s;
     }
 
+    public String getFrivilligNames() {
+        String s = "";
+        s = s + firstName +
+                " " + lastName;
+        return s;
+    }
+
     public int getID() {
         return ID;
     }
+
 }

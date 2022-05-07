@@ -1,7 +1,13 @@
 package gruppe8.gui;
 
+import gruppe8.backend.Bod;
+import gruppe8.backend.DataHandlerBod;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -38,13 +44,34 @@ public class StallsList extends BorderPane {
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
 
-        ListView stallsListView = new ListView();
+        DataHandlerBod stallsHandler = new DataHandlerBod();
+        stallsHandler.openFile();
 
-        stallsListView.getItems().add("Stall 1");
-        stallsListView.getItems().add("Stall 2");
-        stallsListView.getItems().add("Stall 3");
+        TableView<Bod> stallsTableView = new TableView<>();
+        stallsTableView.setPrefWidth(200);
 
-        hBox.getChildren().add(stallsListView);
+        ObservableList<Bod> items = FXCollections.observableArrayList(stallsHandler.dataArrayBod);
+
+        TableColumn<Bod, String> stallNameColumn = new TableColumn<>("Bodens Navn");
+        stallNameColumn.setCellValueFactory(new PropertyValueFactory<>("navn"));
+
+        stallsTableView.setItems(items);
+
+        stallsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        stallsTableView.getColumns().add(stallNameColumn);
+
+        final String[] temp1 = new String[1];
+
+        stallsTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            temp1[0] = newValue.getNavn();
+            stallsHandler.setCurrentBod(temp1[0]);
+            System.out.println("Selected Bod: " + temp1[0] + "\n");
+        });
+
+        hBox.getChildren().add(stallsTableView);
+
+        stallsHandler.closeFile();
 
         vBox.getChildren().add(hBox);
 
@@ -54,14 +81,19 @@ public class StallsList extends BorderPane {
         Button createStall = new Button("Opret en Bod");
         createStall.setAlignment(Pos.BOTTOM_LEFT);
         createStall.setOnAction(e -> main.moveToCreateStall());
+        Button deleteStall = new Button("Slet Bod");
+        deleteStall.setAlignment(Pos.BOTTOM_CENTER);
+        deleteStall.setOnAction(e -> System.out.print(stallsHandler.currentBod + "\n"));
+        deleteStall.setOnAction(actionEvent -> {stallsHandler.openFile(); stallsHandler.sletBod(stallsHandler.currentBod);stallsHandler.closeFile();main.moveToStallsList();});
         Button chooseStall = new Button("Se Vagtplan");
         chooseStall.setAlignment(Pos.BOTTOM_RIGHT);
         chooseStall.setOnAction(e -> main.moveToStallSchedule());
-        button.getChildren().addAll(createStall, chooseStall);
+        button.getChildren().addAll(createStall,deleteStall, chooseStall);
 
         stallsList.setAlignment(Pos.CENTER);
         stallsList.setSpacing(10);
         stallsList.getChildren().addAll(topSign, vBox, button);
+
         return stallsList;
     }
 

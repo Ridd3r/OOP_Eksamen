@@ -1,5 +1,6 @@
 package gruppe8.gui;
 
+import gruppe8.backend.DataHandlerBod;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -27,8 +28,10 @@ public class StallSchedule extends BorderPane {
         HBox stallScheduleHBox = new HBox();
         stallScheduleHBox.setAlignment(Pos.CENTER);
 
+        DataHandlerBod bod = new DataHandlerBod();
+
         HBox top = new HBox();
-        Text schedule = new Text("Vagtplan");
+        Text schedule = new Text(bod.getCurrentBod() + "'s Vagtplan");
         top.setAlignment(Pos.TOP_CENTER);
         schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
         top.getChildren().add(schedule);

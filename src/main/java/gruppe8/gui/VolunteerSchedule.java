@@ -1,5 +1,8 @@
 package gruppe8.gui;
 
+import gruppe8.backend.DataHandlerBod;
+import gruppe8.backend.DataHandlerFrivillig;
+import gruppe8.backend.Frivillig;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -28,8 +31,17 @@ public class VolunteerSchedule extends BorderPane {
         HBox stallScheduleHBox = new HBox();
         stallScheduleHBox.setAlignment(Pos.CENTER);
 
+        DataHandlerFrivillig getFrivilligHandler = new DataHandlerFrivillig();
+        DataHandlerBod getVagter = new DataHandlerBod();
+        getFrivilligHandler.openFile();
+        getVagter.openFile();
+
+        System.out.println(getFrivilligHandler.tempId);
+
+        Frivillig s = getFrivilligHandler.getFrivillig(2);
+
         HBox top = new HBox();
-        Text schedule = new Text("Vagtplan");
+        Text schedule = new Text(s.getFirstName() + " " + s.getLastName() +"'s Vagtplan");
         top.setAlignment(Pos.TOP_CENTER);
         schedule.setFont(Font.font("Rockwell", FontWeight.BOLD, 30));
         top.getChildren().add(schedule);
@@ -38,7 +50,6 @@ public class VolunteerSchedule extends BorderPane {
         first.setAlignment(Pos.CENTER);
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
-        //gridPane.setGridLinesVisible(true);
 
         Label eightToTwelve = new Label("08 - 12");
         Label twelveToFour = new Label("12 - 16");
@@ -50,32 +61,33 @@ public class VolunteerSchedule extends BorderPane {
         Label friday = new Label("Fredag");
         Label saturday = new Label("Lørdag");
         Label sunday = new Label("Søndag");
-        Label mandagMorgen = new Label("Test");
-        Label mandagMiddag = new Label("Test 2");
-        Label mandagAften = new Label("Test 3");
-        Label tirsdagMorgen = new Label("Test");
-        Label tirsdagMiddag = new Label("Test 2");
-        Label tirsdagAften = new Label("Test 3");
-        Label onsdagMorgen = new Label("Test");
-        Label onsdagMiddag = new Label("Test 2");
-        Label onsdagAften = new Label("Test 3");
-        Label torsdagMorgen = new Label("Test");
-        Label torsdagMiddag = new Label("Test 2");
-        Label torsdagAften = new Label("Test 3");
-        Label fredagMorgen = new Label("Test");
-        Label fredagMiddag = new Label("Test 2");
-        Label fredagAften = new Label("Test 3");
-        Label lordagMorgen = new Label("Test");
-        Label lordagMiddag = new Label("Test 2");
-        Label lordagAften = new Label("Test 3");
-        Label sondagMorgen = new Label("Test");
-        Label sondagMiddag = new Label("Test 2");
-        Label sondagAften = new Label("Test 3");
+        Label mandagMorgen = new Label(getVagter.getVagt(s.getID(), 0)); //Funktionskald til getVagt skriv vagtNr manuelt - hent frivilligID og sammensæt
+        Label mandagMiddag = new Label(getVagter.getVagt(s.getID(), 1));
+        Label mandagAften = new Label(getVagter.getVagt(s.getID(), 2));
+        Label tirsdagMorgen = new Label(getVagter.getVagt(s.getID(), 3));
+        Label tirsdagMiddag = new Label(getVagter.getVagt(s.getID(), 4));
+        Label tirsdagAften = new Label(getVagter.getVagt(s.getID(), 5));
+        Label onsdagMorgen = new Label(getVagter.getVagt(s.getID(), 6));
+        Label onsdagMiddag = new Label(getVagter.getVagt(s.getID(), 7));
+        Label onsdagAften = new Label(getVagter.getVagt(s.getID(), 8));
+        Label torsdagMorgen = new Label(getVagter.getVagt(s.getID(), 9));
+        Label torsdagMiddag = new Label(getVagter.getVagt(s.getID(), 10));
+        Label torsdagAften = new Label(getVagter.getVagt(s.getID(), 11));
+        Label fredagMorgen = new Label(getVagter.getVagt(s.getID(), 12));
+        Label fredagMiddag = new Label(getVagter.getVagt(s.getID(), 13));
+        Label fredagAften = new Label(getVagter.getVagt(s.getID(), 14));
+        Label lordagMorgen = new Label(getVagter.getVagt(s.getID(), 15));
+        Label lordagMiddag = new Label(getVagter.getVagt(s.getID(), 16));
+        Label lordagAften = new Label(getVagter.getVagt(s.getID(), 17));
+        Label sondagMorgen = new Label(getVagter.getVagt(s.getID(), 18));
+        Label sondagMiddag = new Label(getVagter.getVagt(s.getID(), 19));
+        Label sondagAften = new Label(getVagter.getVagt(s.getID(), 20));
 
+        //Style from http://www.java2s.com/Tutorials/Java/JavaFX_How_to/HBox/Add_border_style_to_HBox.html
         //First Column, row 1, 2, 3
         HBox clockRow1 = new HBox();
         clockRow1.getChildren().add(eightToTwelve);
-        clockRow1.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" //Style from http://www.java2s.com/Tutorials/Java/JavaFX_How_to/HBox/Add_border_style_to_HBox.htm
+        clockRow1.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
                 + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
                 + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
         HBox clockRow2 = new HBox();
@@ -280,6 +292,10 @@ public class VolunteerSchedule extends BorderPane {
 
         VBox.setVgrow(volunteerScheduleVBox, Priority.ALWAYS);
         volunteerScheduleVBox.getChildren().addAll(top, first);
+
+        getFrivilligHandler.closeFile();
+        getVagter.closeFile();
+
         return volunteerScheduleVBox;
     }
 

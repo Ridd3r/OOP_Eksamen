@@ -1,6 +1,9 @@
 package gruppe8.gui;
 
+import gruppe8.backend.DataHandlerFrivillig;
 import gruppe8.backend.Frivillig;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -11,22 +14,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static gruppe8.gui.BackgroundPane.*;
-import static gruppe8.backend.DataHandlerFrivillig.*;
-import static java.util.Arrays.stream;
 
 //List of volunteers
 public class VolunteerList extends BorderPane {
 
     GUI main;
-    static String filePath = "src/main/java/gruppe8/Frivillige.txt";
 
     public VolunteerList(GUI main) {
         this.main = main;
@@ -51,7 +44,12 @@ public class VolunteerList extends BorderPane {
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
 
-        TableView<Frivillig> volunteerTableView = new TableView<>(); //Ændring fra normal til "Generic" udtryk? Warning gav anledning til ny opsætning
+        DataHandlerFrivillig frivilligHandler = new DataHandlerFrivillig();
+        frivilligHandler.openFile();
+
+        TableView<Frivillig> volunteerTableView = new TableView<>();
+
+        ObservableList<Frivillig> persons = FXCollections.observableArrayList(frivilligHandler.dataArray);
 
         TableColumn<Frivillig, String> firstNameColumn = new TableColumn<>("Fornavn");
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -64,60 +62,41 @@ public class VolunteerList extends BorderPane {
         TableColumn<Frivillig, String> emailColumn = new TableColumn<>("Email");
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        volunteerTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        volunteerTableView.setItems(persons);
+
+        frivilligHandler.closeFile();
 
         volunteerTableView.getColumns().addAll(firstNameColumn, lastNameColumn, ageColumn, phoneNumberColumn, emailColumn);
 
-        volunteerTableView.getItems().add(new Frivillig("Constantine", "Undergrove", 42, 42958761, "jubi@dk.dk"));
-        volunteerTableView.getItems().add(new Frivillig("Genevieve", "Vandenberg", 35, 8745137, "123@ok.dk"));
+        final String[] temp1 = new String[2];
+
+        volunteerTableView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            temp1[0] = newValue.getFirstName();
+            frivilligHandler.setTempFirstName(temp1[0]);
+            temp1[1] = newValue.getLastName();
+            frivilligHandler.setTempLastName(temp1[1]);
+        });
 
         hBox.getChildren().add(volunteerTableView);
 
         vBox.getChildren().add(hBox);
 
-        VBox button = new VBox();
+        HBox button = new HBox();
+        button.setSpacing(30);
         button.setAlignment(Pos.BOTTOM_CENTER);
         Button createVolunteer = new Button("Opret en Frivillig");
         createVolunteer.setAlignment(Pos.BOTTOM_CENTER);
         createVolunteer.setOnAction(e -> main.moveToCreateVolunteer());
-        button.getChildren().add(createVolunteer);
+        Button deleteVolunteer = new Button("Slet Frivillig");
+        deleteVolunteer.setAlignment(Pos.BOTTOM_CENTER);
+        deleteVolunteer.setOnAction(actionEvent -> {frivilligHandler.openFile(); frivilligHandler.sletFrivillig(frivilligHandler.tempFirstName, frivilligHandler.tempLastName); frivilligHandler.closeFile(); main.moveToVolunteerList(); }); //Note - Kan ikke få den til at virke uden IOException
+        button.getChildren().addAll(createVolunteer, deleteVolunteer);
 
         volunteerList.setAlignment(Pos.CENTER);
         volunteerList.setSpacing(10);
         volunteerList.getChildren().addAll(topSign,vBox,button);
         return volunteerList;
     }
-
-     /*public class Person {
-        private String firstName;
-        private String lastName;
-        private Integer age;
-        private Integer phoneNumber;
-        private String email;
-
-        public Person(String firstName, String lastName, Integer age, Integer phoneNumber, String email) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.age = age;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
-        }
-
-            public void setFirstName(String name) {this.firstName = name; }
-            public String getFirstName() {return this.firstName;}
-
-            public void setLastName(String name){this.firstName = name;}
-            public String getLastName() {return this.lastName;}
-
-            public void setAge(int age) {this.age = age;}
-            public int getAge(){return this.age;}
-
-            public void setPhoneNumber(int number) {this.phoneNumber = number;}
-            public int getPhoneNumber() {return this.phoneNumber;}
-
-            public void setEmail(String email) {this.email = email;}
-            public String getEmail() { return this.email;}
-    }*/
 
     MenuBar getMenuBar() {
         MenuBar menuBar = new MenuBar();
@@ -178,5 +157,5 @@ public class VolunteerList extends BorderPane {
         vBoxTop.getChildren().addAll(hBoxMenu, hBoxTopImg);
         return vBoxTop;
     }
-
 }
+

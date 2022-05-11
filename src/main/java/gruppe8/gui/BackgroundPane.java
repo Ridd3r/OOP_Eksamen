@@ -17,7 +17,7 @@ import javafx.scene.paint.Stop;
 public class BackgroundPane extends BorderPane {
 
     public static ImageView RoskildeLogo() {
-        Image image1 = new Image("file:///C:/Users/JayHo/IdeaProjects/GUIMockUp/src/roskilde3.png");
+        Image image1 = new Image("file:src/roskilde3.png");
         ImageView roskildeLogo = new ImageView(image1);
         roskildeLogo.setFitWidth(130);
         roskildeLogo.setFitHeight(90);
@@ -28,7 +28,7 @@ public class BackgroundPane extends BorderPane {
     }
 
     public static ImageView TuborgLogo() {
-        Image image2 = new Image("file:///C:/Users/JayHo/IdeaProjects/GUIMockUp/src/tuborg2.png");
+        Image image2 = new Image("file:src/tuborg2.png");
         ImageView tuborgLogo = new ImageView(image2);
         tuborgLogo.setFitWidth(130);
         tuborgLogo.setFitHeight(90);
@@ -39,7 +39,7 @@ public class BackgroundPane extends BorderPane {
     }
 
     public static ImageView LoveSpring() {
-        Image image3 = new Image("file:///C:/Users/JayHo/IdeaProjects/GUIMockUp/src/LoveSpringLogo.png");
+        Image image3 = new Image("file:src/LoveSpringLogo.png");
         ImageView loveSpringLogo = new ImageView(image3);
         loveSpringLogo.setFitWidth(130);
         loveSpringLogo.setFitHeight(90);

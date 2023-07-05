@@ -13,4 +13,5 @@ jobs:
       - name: Update diagram
         uses: ridd3r/oop_eksamen@main
         with:
+          output_file: "images/diagram.svg"
           excluded_paths: "ignore,.github"
